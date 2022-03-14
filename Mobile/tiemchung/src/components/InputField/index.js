@@ -17,6 +17,7 @@ InputField.propTypes = {
     onChangeText: PropTypes.func,
     onFocus: PropTypes.func,
     inputStyle: PropTypes.object,
+    labelStyle: PropTypes.object,
     rightIcon: PropTypes.object,
     keyboardType: PropTypes.string
 };

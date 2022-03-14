@@ -13,7 +13,8 @@ Text_Field.propTypes = {
     label: PropTypes.string,
     errorMessage: PropTypes.string,
     disabled: PropTypes.bool,
-    onChangeText: PropTypes.func
+    onChangeText: PropTypes.func,
+    style: PropTypes.object
 };
 
 export default Text_Field
