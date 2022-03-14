@@ -6,13 +6,6 @@ import store from '../redux';
 
 export default function HomeScreen({ navigation }) {
 
-    function logOut() {
-        store.dispatch({ type: 'SIGN_OUT' })
-    }
-
-    console.log('screen height: ', Dimensions.get('screen').height);
-    console.log('screen width: ', Dimensions.get('screen').width);
-
     return (
         <SafeAreaView>
             <Card containerStyle={styles.cardContainer}>
