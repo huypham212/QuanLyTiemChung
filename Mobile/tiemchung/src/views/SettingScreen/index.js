@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from '../components';
+import { View } from 'react-native';
+import { Button } from '../../components';
 import store from '../redux';
 import auth from '@react-native-firebase/auth';
 
@@ -17,19 +17,6 @@ const SettingScreen = ({ navigation }) => {
 
     return (
         <View style={styles.buttonView}>
-            <Button
-                title="Nơi tiêm"
-                containerStyle={styles.buttonContainerStyle}
-                icon={{
-                    name: "map-marker-alt",
-                    color: "#FF0000",
-                    type: "font-awesome-5",
-                    size: 25,
-                }}
-                iconPosition='top'
-                iconContainerStyle={{ marginBottom: 10 }}
-                buttonStyle={styles.buttonStyle}
-                titleStyle={{ color: "#000000", fontSize: 14 }} />
 
             <Button
                 title="Thống kê"
@@ -63,24 +50,4 @@ const SettingScreen = ({ navigation }) => {
     )
 }
 
-export default SettingScreen
-
-const styles = StyleSheet.create({
-    buttonContainerStyle: {
-        width: 100,
-        height: 75,
-        marginRight: 20,
-        marginTop: 25,
-        borderRadius: 10
-    },
-
-    buttonView: {
-        flexDirection: 'row',
-        alignContent: 'center',
-        justifyContent: 'center'
-    },
-
-    buttonStyle: {
-        backgroundColor: 'transparent',
-    },
-})
+export default SettingScreen;

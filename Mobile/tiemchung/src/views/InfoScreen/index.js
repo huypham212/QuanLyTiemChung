@@ -18,7 +18,7 @@ export default function InfoScreen({ navigation }) {
                     setSelectedIndex(value);
                 }}
                 textStyle={styles.titleText}
-                //buttonStyle={styles.btnGroupStyle}
+                selectedButtonStyle={styles.btnGroupStyle}
                 containerStyle={{ marginTop: 20, height: 50, borderRadius: 10, }}
             />
             {selectedIndex == 0 ? <PersonalInfo /> : <VaccineInfo />}
