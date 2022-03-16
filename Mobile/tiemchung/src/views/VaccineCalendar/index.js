@@ -2,7 +2,7 @@ import React from 'react'
 import { Alert, ScrollView, View } from 'react-native'
 import { Card, Divider } from 'react-native-elements'
 import styles from './styles'
-import { Text, InputField, Icon, Button } from '../../components'
+import { Text, Icon, Button } from '../../components'
 
 const VaccineCalendar = ({ navigation }) => {
     return (
@@ -35,7 +35,7 @@ const VaccineCalendar = ({ navigation }) => {
                             iconPosition='top'
                             iconContainerStyle={{ marginTop: -10, marginLeft: 10 }}
                             buttonStyle={{ backgroundColor: '#FFFFFF' }}
-                            onPress={() => { Alert.alert('Chi tiết đăng ký') }} />
+                            onPress={() => navigation.navigate('DetailCalendar')} />
                     </View>
                 </View>
             </Card>

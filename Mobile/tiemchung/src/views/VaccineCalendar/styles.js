@@ -40,6 +40,10 @@ const styles = StyleSheet.create({
 
     textStyles: {
         fontSize: 18,
+    },
+
+    detailStyle: {
+        marginBottom: 5
     }
 
 })
