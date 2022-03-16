@@ -78,7 +78,8 @@ const HomeScreen = ({ navigation }) => {
                             iconPosition='top'
                             iconContainerStyle={{ marginBottom: 10 }}
                             buttonStyle={styles.buttonStyle}
-                            titleStyle={{ color: "#000000", fontSize: 14 }} />
+                            titleStyle={{ color: "#000000", fontSize: 14 }}
+                            onPress={() => navigation.navigate('VaccineAddress')} />
 
                         <Button
                             title="Tác dụng phụ"
@@ -92,7 +93,8 @@ const HomeScreen = ({ navigation }) => {
                             iconPosition='top'
                             iconContainerStyle={{ marginBottom: 10 }}
                             buttonStyle={styles.buttonStyle}
-                            titleStyle={{ color: "#000000", fontSize: 13 }} />
+                            titleStyle={{ color: "#000000", fontSize: 13 }}
+                            onPress={() => navigation.navigate('SideEffect')} />
 
                         <Button
                             title="Cài đặt"
