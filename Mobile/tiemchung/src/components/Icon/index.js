@@ -13,7 +13,8 @@ Icons.propTypes = {
         'font-awesome', 'font-awesome-5'
     ]),
     size: PropTypes.number,
-    onPress: PropTypes.func
+    onPress: PropTypes.func,
+    iconStyle: PropTypes.object
 }
 
 export default Icons

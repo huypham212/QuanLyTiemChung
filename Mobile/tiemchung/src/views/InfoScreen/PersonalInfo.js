@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
 import { Button, Text, InputField } from '../../components';
 import { Picker } from '@react-native-picker/picker';
+import styles from './styles';
 
 const PersonalInfo = () => {
     const [name, setName] = useState('');
-    const [selectedGender, setSelectedGender] = useState();
+    const [selectedGender, setSelectedGender] = useState('');
     return (
         <ScrollView style={styles.viewContainers}>
             <InputField
@@ -63,40 +64,3 @@ const PersonalInfo = () => {
 }
 
 export default PersonalInfo
-
-const styles = StyleSheet.create({
-    viewContainers: {
-        marginTop: 10
-    },
-
-    labelStyles: {
-        fontSize: 18,
-        color: '#888888',
-    },
-
-    titleStyles: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#888888',
-        marginLeft: 10
-    },
-
-    inputStyle: {
-        paddingLeft: 10
-    },
-
-    viewDobStyle: {
-        flexDirection: 'row'
-    },
-
-    btnStyle: {
-        borderRadius: 30,
-        width: 200,
-        alignSelf: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#4CC552',
-        fontSize: 24,
-        marginTop: 30,
-        marginBottom: 15
-    },
-})

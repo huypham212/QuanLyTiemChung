@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Button } from '../../components';
-import store from '../redux';
+import store from '../../redux';
 import auth from '@react-native-firebase/auth';
 
 const SettingScreen = ({ navigation }) => {
