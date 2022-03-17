@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "173278656065",
+    "firebase_url": "https://qltc-57440-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "qltc-57440",
+    "storage_bucket": "qltc-57440.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173278656065:android:067ce8681b09c3c2e238c0",
+        "android_client_info": {
+          "package_name": "com.tiemchung"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173278656065-60e0ea3eeh9f5bvcbf36ss3qt55jg2mp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC29r1RUaDGsnDWS6f2-XY4TuqlYADkn34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173278656065-60e0ea3eeh9f5bvcbf36ss3qt55jg2mp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
