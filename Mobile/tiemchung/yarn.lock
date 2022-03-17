@@ -1534,7 +1534,7 @@
   "resolved" "https://registry.npmjs.org/@react-native-community/masked-view/-/masked-view-0.1.11.tgz"
   "version" "0.1.11"
 
-"@react-native-firebase/app@^14.5.0", "@react-native-firebase/app@14.5.0":
+"@react-native-firebase/app@^14.5.0", "@react-native-firebase/app@14.5.0", "@react-native-firebase/app@14.5.1":
   "integrity" "sha512-pMTYZA4gQl/m4+9tYE9/3YpGVfuqePg2RF1Fj+/6EUyt6w8y8ADvJyTXzFmJwEkG5CdyWaqvtEyZmsifInUp3w=="
   "resolved" "https://registry.npmjs.org/@react-native-firebase/app/-/app-14.5.0.tgz"
   "version" "14.5.0"
@@ -1547,6 +1547,11 @@
   "integrity" "sha512-4Gu7VjxLxa7x/0dcfhT/woUCPIWq2jzLaIAca2wrg7xS3x6egFIXC/GiVGJ3WPD9pe0XJDi/lcISR+F8j2Gc2w=="
   "resolved" "https://registry.npmjs.org/@react-native-firebase/auth/-/auth-14.5.0.tgz"
   "version" "14.5.0"
+
+"@react-native-firebase/database@^14.5.1":
+  "integrity" "sha512-bSEzLEBhiIoD/xtqDdrgNqWYgHAvBk0OyuWvfGZByzZaZsCsR+4QDCTe/yb9EZRuSKHvTwYw8Sz2zpC+39WAUA=="
+  "resolved" "https://registry.npmjs.org/@react-native-firebase/database/-/database-14.5.1.tgz"
+  "version" "14.5.1"
 
 "@react-native-picker/picker@^2.3.1":
   "integrity" "sha512-DAw1o3bHNRnQPImsK53xCYkgC8bH+t9uTM+0JjNIlmMwvVLFnmDxi9v5iBTIWFMWG/pUHQaw66E29wW6oJG9Tw=="
