@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
 
     btnGroupStyle: {
         backgroundColor: '#4CC552',
+        borderRadius: 50
     },
 
     titleText: {

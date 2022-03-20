@@ -1,24 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, ScrollView, View } from 'react-native';
+import { StyleSheet, ScrollView, View, Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
+import { connect } from 'react-redux';
 import { Button, Text, InputField } from '../../components';
 import { Picker } from '@react-native-picker/picker';
 import styles from './styles';
 
-const PersonalInfo = () => {
-    const [user, setUser] = useState({});
-    const [selectedGender, setSelectedGender] = useState('');
-
-    useEffect(() => {
-        database().ref('/users/' + auth().currentUser.uid).on('value', snapshot => {
-            setUser(snapshot.val());
-            setSelectedGender(snapshot.val().gender)
-        });
-    }, []);
+const PersonalInfo = (props) => {
+    const [name, setName] = useState(props.user.name);
+    const [gender, setGender] = useState(props.user.gender);
+    const [dob, setDob] = useState(props.user.dob);
+    const [idCard, setIdCard] = useState(props.user.idCard);
+    const [phone, setPhone] = useState(props.user.phone);
+    const [email, setEmail] = useState(props.user.email);
+    const [province, setProvince] = useState(props.user.address.province);
+    const [city, setCity] = useState(props.user.address.city);
+    const [commune, setCommune] = useState(props.user.address.commune);
+    const [details, setDetails] = useState(props.user.address.details);
 
     const updateData = () => {
-        return;
+        database().ref("/users/" + auth().currentUser.uid).update({
+            name: name,
+            gender: gender,
+            dob: dob,
+            idCard: idCard,
+            phone: phone,
+            email: email,
+            address: {
+                province: province,
+                city: city,
+                commune: commune,
+                details: details
+            }
+        }).then(() => Alert.alert("Thông báo", "Cập nhật thông tin thành công"))
+            .catch(error => { Alert.alert("Thông báo", "Cập nhật thông tin không thành công") })
     }
 
     return (
@@ -26,14 +42,15 @@ const PersonalInfo = () => {
             <InputField
                 inputStyle={styles.inputStyle}
                 label="Họ và tên"
-                value={user.name}
+                value={name}
                 labelStyle={styles.labelStyles}
+                onChangeText={setName}
             />
             <Text style={styles.titleStyles}>Giới tính</Text>
             <Picker
-                selectedValue={selectedGender}
+                selectedValue={gender}
                 onValueChange={(itemValue) =>
-                    setSelectedGender(itemValue)}
+                    setGender(itemValue)}
             >
                 <Picker.Item style={{ fontSize: 18 }} label="Nam" value="Nam" />
                 <Picker.Item style={{ fontSize: 18 }} label="Nữ" value="Nữ" />
@@ -43,32 +60,59 @@ const PersonalInfo = () => {
             <InputField
                 inputStyle={styles.inputStyle}
                 label="Ngày tháng năm sinh"
-                value={user.dob}
+                value={dob}
                 labelStyle={styles.labelStyles}
+                onChangeText={setDob}
             />
             <InputField
                 inputStyle={styles.inputStyle}
                 label="CMND/CCCD/Hộ chiếu"
-                value={user.idCard}
+                value={idCard}
                 labelStyle={styles.labelStyles}
+                onChangeText={setIdCard}
             />
             <InputField
                 inputStyle={styles.inputStyle}
                 label="Điện thoại"
-                value={user.phone}
+                value={phone}
                 labelStyle={styles.labelStyles}
+                onChangeText={setPhone}
             />
             <InputField
                 inputStyle={styles.inputStyle}
                 label="Email"
-                value={user.email}
+                value={email}
                 labelStyle={styles.labelStyles}
+                onChangeText={setEmail}
+                disabled={true}
             />
             <InputField
                 inputStyle={styles.inputStyle}
-                label="Địa chỉ"
-                //value={user.address + ', ' + user.address.commune + ', ' + user.address.city + ', ' + user.address.province}
+                label="Tỉnh/Thành phố"
+                value={province}
                 labelStyle={styles.labelStyles}
+                onChangeText={setProvince}
+            />
+            <InputField
+                inputStyle={styles.inputStyle}
+                label="Quận/Huyện"
+                value={city}
+                labelStyle={styles.labelStyles}
+                onChangeText={setCity}
+            />
+            <InputField
+                inputStyle={styles.inputStyle}
+                label="Xã/Phường"
+                value={commune}
+                labelStyle={styles.labelStyles}
+                onChangeText={setCommune}
+            />
+            <InputField
+                inputStyle={styles.inputStyle}
+                label="Địa chỉ nơi ở"
+                value={details}
+                labelStyle={styles.labelStyles}
+                onChangeText={setDetails}
             />
 
             <Button
@@ -81,4 +125,12 @@ const PersonalInfo = () => {
     )
 }
 
-export default PersonalInfo
+const mapStateToProps = (state) => {
+    return {
+        user: state.appState.user
+    }
+}
+
+export default connect(mapStateToProps)(PersonalInfo)
+
+//export default PersonalInfo

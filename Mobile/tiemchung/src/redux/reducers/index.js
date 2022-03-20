@@ -1,9 +1,17 @@
-import { SIGN_IN, SIGN_OUT, GET_USER } from '../constants';
+import { SIGN_IN, SIGN_OUT, GET_USER, GET_VACCINE_CALENDAR } from '../constants';
 
 let initialState = {
   isLogin: false,
   user: {},
+  vaccineCalendar: []
 };
+
+const getUser = () => {
+  //const [userData, setUserData] = useState({});
+  const userData = database().ref('/users/' + auth().currentUser.uid).once('value');
+  const snapshot = userData.then(snapshot => snapshot.val())
+  console.log(snapshot);
+}
 
 const countReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -27,6 +35,11 @@ const countReducer = (state = initialState, action) => {
         user: action.user
       }
       break;
+    case GET_VACCINE_CALENDAR:
+      state = {
+        ...state,
+        vaccineCalendar: action.vaccineCalendar
+      }
   }
 
   return state;

@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     },
 
     textStyles: {
-        fontSize: 18,
+        fontSize: 16,
     },
 
     detailStyle: {

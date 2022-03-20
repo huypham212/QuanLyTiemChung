@@ -15,7 +15,6 @@ const SettingScreen = (props) => {
 
     return (
         <View style={styles.buttonView}>
-
             <Button
                 title="Thống kê"
                 containerStyle={styles.buttonContainerStyle}

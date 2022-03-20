@@ -36,19 +36,19 @@ const styles = StyleSheet.create({
     },
 
     infoView: {
-        marginTop: 5,
+        marginTop: 15,
         marginBottom: 20
     },
 
     nameUser: {
-        fontSize: 30,
+        fontSize: 25,
         color: '#000000',
         fontWeight: '400',
         textAlign: 'center'
     },
 
     infoUser: {
-        fontSize: 25,
+        fontSize: 20,
         color: '#000000',
         justifyContent: 'center',
         textAlign: 'center',
@@ -58,13 +58,14 @@ const styles = StyleSheet.create({
     buttonContainerStyle: {
         width: 100,
         height: 75,
-        marginRight: 20,
+        marginRight: 10,
         marginTop: 25,
         borderRadius: 10
     },
 
     buttonView: {
         flexDirection: 'row',
+        marginLeft: -10
     },
 
     buttonStyle: {

@@ -2,13 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View } from 'react-native';
 import { Button, Text } from '../../components';
 import { Card } from 'react-native-elements';
+import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 import store from '../../redux';
+import { connect } from 'react-redux';
 import styles from './styles';
 import { connect } from 'react-redux';
 import * as ActionCreator from '../../redux/actions';
 import auth from '@react-native-firebase/auth';
 
 const HomeScreen = (props) => {
+    props.dispatch(ActionCreator.getUser(auth().currentUser.uid));
     return (
         <SafeAreaView>
             <Card containerStyle={styles.cardContainer}>
@@ -37,7 +41,8 @@ const HomeScreen = (props) => {
                             iconContainerStyle={{ marginBottom: 10 }}
                             buttonStyle={styles.buttonStyle}
                             titleStyle={{ color: "#000000", fontSize: 14 }}
-                            onPress={() => navigation.navigate('Info')} />
+                            onPress={() => props.navigation.navigate('Info')}
+                        />
 
                         <Button
                             title="Đăng ký tiêm"
@@ -66,7 +71,8 @@ const HomeScreen = (props) => {
                             iconContainerStyle={{ marginBottom: 10 }}
                             buttonStyle={styles.buttonStyle}
                             titleStyle={{ color: "#000000", fontSize: 14 }}
-                            onPress={() => navigation.navigate('Calendar')} />
+                            onPress={() => props.navigation.navigate('Calendar')}
+                        />
                     </View>
                     <View style={styles.buttonView}>
                         <Button
@@ -82,7 +88,8 @@ const HomeScreen = (props) => {
                             iconContainerStyle={{ marginBottom: 10 }}
                             buttonStyle={styles.buttonStyle}
                             titleStyle={{ color: "#000000", fontSize: 14 }}
-                            onPress={() => navigation.navigate('VaccineAddress')} />
+                            onPress={() => props.navigation.navigate('VaccineAddress')}
+                        />
 
                         <Button
                             title="Tác dụng phụ"
@@ -97,7 +104,8 @@ const HomeScreen = (props) => {
                             iconContainerStyle={{ marginBottom: 10 }}
                             buttonStyle={styles.buttonStyle}
                             titleStyle={{ color: "#000000", fontSize: 13 }}
-                            onPress={() => navigation.navigate('SideEffect')} />
+                            onPress={() => props.navigation.navigate('SideEffect')}
+                        />
 
                         <Button
                             title="Cài đặt"
@@ -112,7 +120,8 @@ const HomeScreen = (props) => {
                             iconContainerStyle={{ marginBottom: 10 }}
                             buttonStyle={styles.buttonStyle}
                             titleStyle={{ color: "#000000", fontSize: 14 }}
-                            onPress={() => navigation.navigate('Setting')} />
+                            onPress={() => props.navigation.navigate('Setting')}
+                        />
                     </View>
                 </View>
             </Card>
@@ -122,8 +131,8 @@ const HomeScreen = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        userInfo: state.appState.user
-        //dobYear: state.appState.user.dob.split("/")[2]
+        isLogged: state.appState.isSignout,
+        userInfo: state.appState.userData
     }
 }
 

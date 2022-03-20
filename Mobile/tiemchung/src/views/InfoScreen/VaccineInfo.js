@@ -1,31 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, ScrollView, Dimensions, View } from 'react-native';
+import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 import { Text, Button } from '../../components';
 import { Card } from 'react-native-elements';
 import styles from './styles';
 
 const VaccineInfo = () => {
 
-    const data = [
-        {
-            vaccineName: 'COVID-19 Vaccine AstraZeneca',
-            vaccineDate: '02/01/2022',
-            vaccineNumber: 'CTMAV5130',
-            vaccineAddress: 'TYT Vĩnh Thạnh'
-        },
-        {
-            vaccineName: 'COVID-19 Vaccine AstraZeneca',
-            vaccineDate: '29/10/2021',
-            vaccineNumber: 'CTMAV587',
-            vaccineAddress: 'TYT Vĩnh Thạnh'
-        },
-        {
-            vaccineName: 'COVID-19 Vaccine AstraZeneca',
-            vaccineDate: '13/09/2021',
-            vaccineNumber: 'PV46670',
-            vaccineAddress: 'TYT Vĩnh Thạnh'
-        }
-    ]
+    const [injectedData, setInjectedData] = useState([]);
+    console.log("First: ", injectedData);
+
+    useEffect(() => {
+        database().ref("/injectedInfo/" + auth().currentUser.uid).on('value', snapshot => {
+            setInjectedData(snapshot.val())
+        })
+        console.log("Second", injectedData)
+    }, [])
+
+    const fetchData = () => {
+        database().ref("/injectedInfo/" + auth().currentUser.uid).on('value', snapshot => {
+            setInjectedData(snapshot.val())
+        })
+    }
 
     return (
         <ScrollView>
@@ -37,56 +34,30 @@ const VaccineInfo = () => {
                     type: "font-awesome-5",
                     size: 20,
                 }}
+                loading
                 iconPosition='left'
                 titleStyle={{ fontSize: 20 }}
                 buttonStyle={styles.btnStyle}
+                onPress={() => fetchData()}
             />
-            <Card containerStyle={styles.cardTopContainer}>
-                <Card.Title style={styles.titleStyle}>Mũi 3</Card.Title>
-                <Card.Divider width={1.5} />
-                <Text style={styles.contentStyle}>Tên Vaccine:
-                    <Text style={styles.detailStyle}> Covid-19 AstraZeneca</Text>
-                </Text>
-                <Text style={styles.contentStyle}>Ngày tiêm:
-                    <Text style={styles.detailStyle}> 02/01/2000</Text>
-                </Text>
-                <Text style={styles.contentStyle}>Số lô vaccine:
-                    <Text style={styles.detailStyle}> ASTR11111</Text>
-                </Text>
-                <Text style={styles.contentStyle}>Cơ sở tiêm:
-                    <Text style={styles.detailStyle}> TYT Vĩnh Thạnh</Text>
-                </Text>
-
-                <Card.Title style={styles.titleStyle}>Mũi 2</Card.Title>
-                <Card.Divider width={1.5} />
-                <Text style={styles.contentStyle}>Tên Vaccine:
-                    <Text style={styles.detailStyle}> Covid-19 AstraZeneca</Text>
-                </Text>
-                <Text style={styles.contentStyle}>Ngày tiêm:
-                    <Text style={styles.detailStyle}> 02/01/2000</Text>
-                </Text>
-                <Text style={styles.contentStyle}>Số lô vaccine:
-                    <Text style={styles.detailStyle}> ASTR11111</Text>
-                </Text>
-                <Text style={styles.contentStyle}>Cơ sở tiêm:
-                    <Text style={styles.detailStyle}> TYT Vĩnh Thạnh</Text>
-                </Text>
-
-                <Card.Title style={styles.titleStyle}>Mũi 1</Card.Title>
-                <Card.Divider width={1.5} />
-                <Text style={styles.contentStyle}>Tên Vaccine:
-                    <Text style={styles.detailStyle}> Covid-19 AstraZeneca</Text>
-                </Text>
-                <Text style={styles.contentStyle}>Ngày tiêm:
-                    <Text style={styles.detailStyle}> 02/01/2000</Text>
-                </Text>
-                <Text style={styles.contentStyle}>Số lô vaccine:
-                    <Text style={styles.detailStyle}> ASTR11111</Text>
-                </Text>
-                <Text style={styles.contentStyle}>Cơ sở tiêm:
-                    <Text style={styles.detailStyle}> TYT Vĩnh Thạnh</Text>
-                </Text>
-            </Card>
+            {injectedData.map((l, i) => (
+                <Card key={i} containerStyle={styles.cardTopContainer}>
+                    <Card.Title style={styles.titleStyle}>Mũi {i + 1}</Card.Title>
+                    <Card.Divider width={1.5} />
+                    <Text style={styles.contentStyle}>Tên Vaccine:
+                        <Text style={styles.detailStyle}> {l.vaccineName}</Text>
+                    </Text>
+                    <Text style={styles.contentStyle}>Ngày tiêm:
+                        <Text style={styles.detailStyle}> {l.injectedDate}</Text>
+                    </Text>
+                    <Text style={styles.contentStyle}>Số lô vaccine:
+                        <Text style={styles.detailStyle}> {l.batchNumber}</Text>
+                    </Text>
+                    <Text style={styles.contentStyle}>Cơ sở tiêm:
+                        <Text style={styles.detailStyle}> {l.injectedLocation}</Text>
+                    </Text>
+                </Card>
+            ))}
         </ScrollView>
     )
 }

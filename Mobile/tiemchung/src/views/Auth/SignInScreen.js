@@ -22,11 +22,11 @@ const SignInScreen = (props) => {
             setError('Vui lòng nhập email hoặc mật khẩu!')
             return;
         }
-
+        //console.log(email, password)
         auth().signInWithEmailAndPassword(email, password).then(data => {
-            props.dispatch(ActionCreator.getUser(data.user.uid));
             props.dispatch(ActionCreator.signIn());
         }).catch(error => {
+            //Alert.alert('Lỗi', 'Email hoặc mật khẩu không hợp lệ!')
             Alert.alert('Lỗi', 'Email hoặc mật khẩu không hợp lệ!')
         })
     }
@@ -76,7 +76,7 @@ const SignInScreen = (props) => {
                     title="Đăng nhập"
                     titleStyle={{ fontSize: 20 }}
                     buttonStyle={styles.btnStyle}
-                    onPress={() => login(email, password)}
+                    onPress={() => login()}
                 />
                 <Button
                     title="Đăng ký"

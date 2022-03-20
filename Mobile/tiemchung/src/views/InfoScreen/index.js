@@ -9,7 +9,7 @@ import styles from './styles';
 export default function InfoScreen({ navigation }) {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
-    console.log(selectedIndex);
+    //console.log(selectedIndex);
     return (
         <ScrollView>
             <ButtonGroup
@@ -18,9 +18,10 @@ export default function InfoScreen({ navigation }) {
                 onPress={(value) => {
                     setSelectedIndex(value);
                 }}
+                innerBorderStyle={{ width: 0 }}
                 textStyle={styles.titleText}
                 selectedButtonStyle={styles.btnGroupStyle}
-                containerStyle={{ marginTop: 20, height: 50, borderRadius: 10, }}
+                containerStyle={{ marginTop: 20, height: 50, borderRadius: 50, }}
             />
             {selectedIndex == 0 ? <PersonalInfo /> : <VaccineInfo />}
         </ScrollView>
