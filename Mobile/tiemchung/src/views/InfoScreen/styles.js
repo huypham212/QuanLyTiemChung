@@ -2,6 +2,47 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 const styles = StyleSheet.create({
+    //Styles for index.js
+    infoView: {
+        marginTop: 20,
+        alignContent: 'center',
+        alignSelf: 'flex-start',
+    },
+
+    warningText: {
+        marginLeft: 20,
+        marginRight: 20,
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignContent: 'center',
+        color: '#FF0000',
+        fontSize: 18,
+    },
+
+    btnGroupStyle: {
+        backgroundColor: '#4CC552',
+    },
+
+    titleText: {
+        fontWeight: 'bold',
+        fontSize: 18,
+        color: '#000000',
+    },
+
+    inputTitle: {
+        marginTop: 10,
+        marginLeft: 20,
+        marginRight: 20,
+        fontSize: 20
+    },
+
+    inputStyle: {
+        marginLeft: 20,
+        marginRight: 20,
+        fontSize: 20
+    },
+
+    //Styles for PersonalInfo and VaccineInfo
     viewContainers: {
         marginTop: 10
     },

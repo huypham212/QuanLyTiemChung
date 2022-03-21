@@ -4,6 +4,7 @@ import { Button, Text, InputField } from '../../components'
 import { Tab, ButtonGroup } from 'react-native-elements'
 import PersonalInfo from './PersonalInfo';
 import VaccineInfo from './VaccineInfo';
+import styles from './styles';
 
 export default function InfoScreen({ navigation }) {
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -26,44 +27,3 @@ export default function InfoScreen({ navigation }) {
 
     )
 }
-
-const styles = StyleSheet.create({
-    infoView: {
-        marginTop: 20,
-        alignContent: 'center',
-        alignSelf: 'flex-start',
-    },
-
-    warningText: {
-        marginLeft: 20,
-        marginRight: 20,
-        textAlign: 'center',
-        justifyContent: 'center',
-        alignContent: 'center',
-        color: '#FF0000',
-        fontSize: 18,
-    },
-
-    btnGroupStyle: {
-        backgroundColor: '#4CC552',
-    },
-
-    titleText: {
-        fontWeight: 'bold',
-        fontSize: 18,
-        color: '#000000',
-    },
-
-    inputTitle: {
-        marginTop: 10,
-        marginLeft: 20,
-        marginRight: 20,
-        fontSize: 20
-    },
-
-    inputStyle: {
-        marginLeft: 20,
-        marginRight: 20,
-        fontSize: 20
-    },
-})
