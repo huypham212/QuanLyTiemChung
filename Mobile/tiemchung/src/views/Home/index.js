@@ -1,11 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { SafeAreaView, StyleSheet, View, Dimensions } from 'react-native';
+import { bindActionCreators } from 'redux';
 import { Button, Text } from '../../components';
 import { Card } from 'react-native-elements';
 import store from '../../redux';
 import styles from './styles';
+import * as ActionCreator from '../../redux/actions';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = (props) => {
+
+    const [userData, setUserData] = useState({});
+    const [dobYear, setDobYear] = useState('');
+    const { dispatch, todos } = props;
+
+    const boundActionCreators = useMemo(
+        () => bindActionCreators(ActionCreator, dispatch),
+        [dispatch]
+    );
+
+    useEffect(() => {
+
+        let action = ActionCreator.getUser(auth().currentUser.uid)
+        dispatch(action);
+
+        database().ref('/users/' + auth().currentUser.uid).on('value', snapshot => {
+            setUserData(snapshot.val());
+
+            var dob = snapshot.val().dob.split("/");
+            setDobYear(dob[2]);
+        });
+    }, []);
+
+    console.log(props.user);
+
     return (
         <SafeAreaView>
             <Card containerStyle={styles.cardContainer}>
@@ -117,4 +144,13 @@ const HomeScreen = ({ navigation }) => {
     )
 }
 
-export default HomeScreen
+const mapStateToProps = (state) => {
+    return {
+        isLogged: state.appState.isSignout,
+        userInfo: state.appState.userData
+    }
+}
+
+export default connect(state => ({ user: state.appState.user }))(HomeScreen)
+
+//export default HomeScreen

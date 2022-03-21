@@ -13,3 +13,14 @@ export function signnOut() {
     value: false
   }
 }
+
+export function getUser(userId) {
+  return {
+    type: 'GET_USER',
+    value: () => {
+      database().ref('/users/' + userId).on('value', snapshot => {
+        return snapshot.val();
+      })
+    }
+  }
+}
