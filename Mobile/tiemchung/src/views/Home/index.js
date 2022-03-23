@@ -1,38 +1,14 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { SafeAreaView, StyleSheet, View, Dimensions } from 'react-native';
-import { bindActionCreators } from 'redux';
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView, View } from 'react-native';
 import { Button, Text } from '../../components';
 import { Card } from 'react-native-elements';
 import store from '../../redux';
 import styles from './styles';
+import { connect } from 'react-redux';
 import * as ActionCreator from '../../redux/actions';
+import auth from '@react-native-firebase/auth';
 
 const HomeScreen = (props) => {
-
-    const [userData, setUserData] = useState({});
-    const [dobYear, setDobYear] = useState('');
-    const { dispatch, todos } = props;
-
-    const boundActionCreators = useMemo(
-        () => bindActionCreators(ActionCreator, dispatch),
-        [dispatch]
-    );
-
-    useEffect(() => {
-
-        let action = ActionCreator.getUser(auth().currentUser.uid)
-        dispatch(action);
-
-        database().ref('/users/' + auth().currentUser.uid).on('value', snapshot => {
-            setUserData(snapshot.val());
-
-            var dob = snapshot.val().dob.split("/");
-            setDobYear(dob[2]);
-        });
-    }, []);
-
-    console.log(props.user);
-
     return (
         <SafeAreaView>
             <Card containerStyle={styles.cardContainer}>
@@ -42,8 +18,8 @@ const HomeScreen = (props) => {
                         <Card.Image style={styles.image} source={require('../../../assets/testQR.png')} />
                     </View>
                     <View style={styles.infoView}>
-                        <Text style={styles.nameUser}>Phạm Nguyễn Thanh Huy</Text>
-                        <Text style={styles.infoUser}>Nam - 2000</Text>
+                        <Text style={styles.nameUser}>{props.userInfo.name}</Text>
+                        <Text style={styles.infoUser}>{props.userInfo.gender}</Text>
                     </View>
                 </Card>
                 <View>
@@ -146,11 +122,11 @@ const HomeScreen = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        isLogged: state.appState.isSignout,
-        userInfo: state.appState.userData
+        userInfo: state.appState.user
+        //dobYear: state.appState.user.dob.split("/")[2]
     }
 }
 
-export default connect(state => ({ user: state.appState.user }))(HomeScreen)
+export default connect(mapStateToProps)(HomeScreen)
 
 //export default HomeScreen

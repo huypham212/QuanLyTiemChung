@@ -28,7 +28,7 @@ const mainNavigator = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        isLogged: state.appState.isSignout
+        isLogged: state.appState.isLogin,
     }
 }
 

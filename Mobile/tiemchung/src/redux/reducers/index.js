@@ -1,21 +1,30 @@
-import { SIGN_IN, SIGN_OUT } from '../constants';
+import { SIGN_IN, SIGN_OUT, GET_USER } from '../constants';
 
 let initialState = {
-  isSignout: false
+  isLogin: false,
+  user: {},
 };
 
 const countReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SIGN_IN':
+    case SIGN_IN:
       state = {
         ...state,
-        isSignout: true
+        isLogin: action.isLogin,
       }
       break;
-    case 'SIGN_OUT':
+    case SIGN_OUT:
       state = {
         ...state,
-        isSignout: false
+        user: action.user,
+        isLogin: action.isLogin,
+      }
+      break;
+    case GET_USER:
+      //console.log(action.user);
+      state = {
+        ...state,
+        user: action.user
       }
       break;
   }
