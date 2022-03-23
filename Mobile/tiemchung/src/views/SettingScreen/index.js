@@ -1,18 +1,16 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Button } from '../../components';
-import store from '../../redux';
+import { connect } from 'react-redux';
+import * as ActionCreators from '../../redux/actions';
 import auth from '@react-native-firebase/auth';
 
-const SettingScreen = ({ navigation }) => {
+const SettingScreen = (props) => {
 
-    console.log(auth().currentUser)
     function logOut() {
         auth().signOut().then(() => {
-            console.log(auth().currentUser);
-            store.dispatch({ type: 'SIGN_OUT' });
+            props.dispatch(ActionCreators.signOut());
         })
-
     }
 
     return (
@@ -50,4 +48,11 @@ const SettingScreen = ({ navigation }) => {
     )
 }
 
-export default SettingScreen;
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         signOut: () => dispatch(ActionCreators.signOut())
+//         //dobYear: state.appState.user.dob.split("/")[2]
+//     }
+// }
+
+export default connect()(SettingScreen)

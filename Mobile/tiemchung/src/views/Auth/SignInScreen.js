@@ -5,13 +5,13 @@ import {
     ScrollView,
     Alert
 } from 'react-native';
-import store from '../../redux'
-import { connect } from 'react-redux';
 import { InputField, Button, Text, Icon } from '../../components';
 import styles from './styles';
+import { connect } from 'react-redux';
+import * as ActionCreator from '../../redux/actions';
 import auth from '@react-native-firebase/auth';
 
-const SignInScreen = ({ navigation }) => {
+const SignInScreen = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPass, setShowPass] = useState(true);
@@ -20,13 +20,12 @@ const SignInScreen = ({ navigation }) => {
     const login = () => {
         if (email === '' || password === '') {
             setError('Vui lòng nhập email hoặc mật khẩu!')
-
             return;
         }
 
         auth().signInWithEmailAndPassword(email, password).then(data => {
-            console.log(data);
-            store.dispatch({ type: 'SIGN_IN' });
+            props.dispatch(ActionCreator.getUser(data.user.uid));
+            props.dispatch(ActionCreator.signIn());
         }).catch(error => {
             Alert.alert('Lỗi', 'Email hoặc mật khẩu không hợp lệ!')
         })
@@ -83,11 +82,11 @@ const SignInScreen = ({ navigation }) => {
                     title="Đăng ký"
                     titleStyle={{ fontSize: 20 }}
                     buttonStyle={styles.btnStyle}
-                    onPress={() => navigation.navigate('Đăng ký')}
+                    onPress={() => props.navigation.navigate('Đăng ký')}
                 />
             </View>
         </ScrollView>
     )
 }
 
-export default SignInScreen;
+export default connect()(SignInScreen);
