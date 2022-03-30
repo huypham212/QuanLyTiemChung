@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { InputField, Button, Text, Icon, Checkbox } from '../../components';
 import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 import styles from './styles';
 
 const SignUpScreen = ({ navigation }) => {
@@ -39,8 +40,23 @@ const SignUpScreen = ({ navigation }) => {
                     else {
                         //console.log(e, pass)
                         auth().createUserWithEmailAndPassword(email, password).then(data => {
-                            console.log(data);
-                            navigation.navigate('Đăng nhập');
+                            database().ref('/users/' + data.user.uid).set({
+                                name: "",
+                                dob: "",
+                                gender: "",
+                                phone: "",
+                                idCard: "",
+                                email: data.user.email,
+                                address: {
+                                    province: "",
+                                    city: "",
+                                    commune: "",
+                                    details: ""
+                                }
+                            }).then(() => {
+                                Alert.alert("Thông báo", "Đăng ký tài khoản thành công!");
+                                navigation.navigate('Đăng nhập');
+                            })
                         }).catch(error => {
                             Alert.alert('Email đã tồn tại!');
                         })

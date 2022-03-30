@@ -13,6 +13,7 @@ import auth from '@react-native-firebase/auth';
 
 const HomeScreen = (props) => {
     props.dispatch(ActionCreator.getUser(auth().currentUser.uid));
+
     return (
         <SafeAreaView>
             <Card containerStyle={styles.cardContainer}>
@@ -21,10 +22,16 @@ const HomeScreen = (props) => {
                     <View style={styles.imageView}>
                         <Card.Image style={styles.image} source={require('../../../assets/testQR.png')} />
                     </View>
-                    <View style={styles.infoView}>
-                        <Text style={styles.nameUser}>{props.userInfo.name}</Text>
-                        <Text style={styles.infoUser}>{props.userInfo.gender}</Text>
-                    </View>
+                    {props.userInfo.name === "" ? (
+                        <View style={styles.infoView}>
+                            <Text style={styles.nameUser} onPress={() => props.navigation.navigate("Info")}>Vui lòng cập nhật thông tin cá nhân</Text>
+                        </View>
+                    ) : (
+                        <View style={styles.infoView}>
+                            <Text style={styles.nameUser}>{props.userInfo.name}</Text>
+                            <Text style={styles.infoUser}>{props.userInfo.gender} - {props.userInfo.dob}</Text>
+                        </View>
+                    )}
                 </Card>
                 <View>
                     <View style={styles.buttonView}>
