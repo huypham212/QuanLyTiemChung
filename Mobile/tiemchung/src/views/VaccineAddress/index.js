@@ -27,7 +27,13 @@ const VaccineAddress = () => {
         }).catch(err => { console.log(err) })
     }
 
-    useEffect(() => fetch_data(), [])
+    useEffect(() => {
+        fetch_data();
+
+        return () => {
+            setData([]);
+        }
+    }, [])
 
     const findLocation = () => {
         if (search != "") {
