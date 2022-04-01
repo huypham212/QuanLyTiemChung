@@ -29,7 +29,6 @@ const countReducer = (state = initialState, action) => {
       }
       break;
     case GET_USER:
-      //console.log(action.user);
       state = {
         ...state,
         user: action.user
@@ -40,6 +39,7 @@ const countReducer = (state = initialState, action) => {
         ...state,
         vaccineCalendar: action.vaccineCalendar
       }
+      break;
   }
 
   return state;

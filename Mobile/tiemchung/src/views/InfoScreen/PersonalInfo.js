@@ -132,5 +132,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(PersonalInfo)
-
-//export default PersonalInfo

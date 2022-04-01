@@ -9,7 +9,6 @@ import styles from './styles';
 export default function InfoScreen({ navigation }) {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
-    //console.log(selectedIndex);
     return (
         <ScrollView>
             <ButtonGroup

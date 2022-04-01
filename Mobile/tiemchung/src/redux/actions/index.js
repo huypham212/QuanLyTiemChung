@@ -1,5 +1,4 @@
 import { SIGN_IN, SIGN_OUT, GET_USER, GET_VACCINE_CALENDAR } from '../constants';
-import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 
 export function signIn() {
