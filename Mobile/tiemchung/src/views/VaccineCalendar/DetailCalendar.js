@@ -7,7 +7,6 @@ import * as ActionCreator from '../../redux/actions';
 import styles from './styles'
 
 const DetailCalendar = (props) => {
-    console.log(props);
     const data = [
         {
             title: "Họ và tên người đăng ký",

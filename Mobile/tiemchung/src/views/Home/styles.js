@@ -1,4 +1,3 @@
-import React from 'react'
 import { StyleSheet, Dimensions } from 'react-native'
 
 const styles = StyleSheet.create({
@@ -70,7 +69,7 @@ const styles = StyleSheet.create({
 
     buttonStyle: {
         backgroundColor: '#FFFFFF',
-    },
+    }
 })
 
 export default styles;
