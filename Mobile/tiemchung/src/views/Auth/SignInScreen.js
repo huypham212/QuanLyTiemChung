@@ -11,14 +11,20 @@ import * as ActionCreator from '../../redux/actions';
 import { useSignIn } from '../../hooks';
 
 const SignInScreen = (props) => {
-    const onSignInSuccess = (res) => {
-        props.dispatch(ActionCreator.signIn());
+
+    const [credential, error, handleChange, signIn] = useSignIn()
+    const [showPass, setShowPass] = useState(true)
+
+    const handleSignIn = async () => {
+        try {
+            const { user } = await signIn();
+            props.dispatch(ActionCreator.signIn());
+        } catch (error) {
+            if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password')
+                Alert.alert("Error", "Email or password was wrong!");
+            console.log(error);
+        }
     }
-    const onSignInError = (error) => {
-        console.error(error)
-    }
-    const [credential, error, handleChange, signIn] = useSignIn(onSignInSuccess, onSignInError)
-    const [showPass, setShowPass] = useState(false)
 
     return (
         <ScrollView style={styles.container}>
@@ -40,7 +46,7 @@ const SignInScreen = (props) => {
                     errorMessage={error.password}
                     value={credential.password}
                     label="Mật Khẩu"
-                    secureTextEntry
+                    secureTextEntry={showPass}
                     onChangeText={(value) => {
                         handleChange("password", value)
                     }}
@@ -61,12 +67,12 @@ const SignInScreen = (props) => {
                     title="Đăng nhập"
                     titleStyle={{ fontSize: 20 }}
                     buttonStyle={styles.btnStyle}
-                    onPress={() => { signIn() }} />
+                    onPress={handleSignIn} />
                 <Button
                     title="Đăng ký"
                     titleStyle={{ fontSize: 20 }}
                     buttonStyle={styles.btnStyle}
-                    onPress={() => props.navigation.navigate('Đăng ký')} />
+                    onPress={() => props.navigation.navigate('SignUp')} />
             </View>
         </ScrollView>
     )

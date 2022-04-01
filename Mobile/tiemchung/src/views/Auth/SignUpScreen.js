@@ -11,17 +11,21 @@ import styles from './styles';
 import { useSignUp } from '../../hooks';
 
 const SignUpScreen = (props) => {
-    const onSignUpSuccess = (res) => {
-        props.navigation.navigate('Đăng nhập');
-    }
-    const onSignUpError = (error) => {
-        console.error(error)
-    }
-    const [credential, error, handleChange, signUp] = useSignUp(onSignUpSuccess, onSignUpError)
+
+    const [credential, error, handleChange, signUp] = useSignUp()
     const [accept, setAccept] = useState(false)
     const [showPass, setShowPass] = useState(true)
     const [showCfrPass, setShowCfrPass] = useState(true)
 
+    const handleSignUp = async () => {
+        try {
+            const user = await signUp();
+            props.navigation.navigate('SignIn');
+        } catch (error) {
+            //TODO: Handle Error;
+            console.error(error)
+        }
+    }
     return (
         <ScrollView style={styles.container}>
             <View style={styles.contentContainer}>
@@ -98,14 +102,13 @@ const SignUpScreen = (props) => {
                         title="Tiếp tục"
                         titleStyle={{ fontSize: 20 }}
                         buttonStyle={styles.btnStyle}
-                        onPress={() => { signUp() }}
+                        onPress={handleSignUp}
                     />
                 ) : (
                     <Button
                         title="Tiếp tục"
                         buttonStyle={styles.btnStyle}
                         disabled="true"
-                        onPress={() => { signUp() }}
                     />
                 )}
             </View>
