@@ -6,7 +6,7 @@ import SettingScreen from '../../views/SettingScreen/index';
 import VaccineCalendar from '../../views/VaccineCalendar/index';
 import DetailCalendar from '../../views/VaccineCalendar/DetailCalendar';
 import VaccineAddress from '../../views/VaccineAddress/index';
-import injectedRegistration from "../../views/injectedRegistration/index";
+import InjectedRegistration from "../../views/injectedRegistration/index";
 
 const Stack = createNativeStackNavigator()
 const HomeNavigator = () => {
@@ -17,7 +17,7 @@ const HomeNavigator = () => {
         <Stack.Screen name='Calendar' component={VaccineCalendar} options={{ title: "Danh sách đăng ký tiêm" }}></Stack.Screen>
         <Stack.Screen name='DetailCalendar' component={DetailCalendar} options={{ title: "Chi tiết đăng ký tiêm" }}></Stack.Screen>
         <Stack.Screen name='VaccineAddress' component={VaccineAddress} options={{ title: "Tra cứu địa chỉ tiêm" }}></Stack.Screen>
-        <Stack.Screen name='injectedRegistration' component={injectedRegistration} options={{ title: "Đăng ký tiêm" }}></Stack.Screen>
+        <Stack.Screen name='InjectedRegistration' component={InjectedRegistration} options={{ title: "Đăng ký tiêm" }}></Stack.Screen>
     </Stack.Navigator>)
 }
 
