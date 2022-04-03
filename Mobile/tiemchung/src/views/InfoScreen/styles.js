@@ -53,15 +53,22 @@ const styles = StyleSheet.create({
         color: '#888888',
     },
 
-    titleStyles: {
+    titleGenderStyles: {
         fontSize: 18,
         fontWeight: 'bold',
         color: '#888888',
         marginLeft: 10
     },
 
+    titleDobStyles: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#888888',
+    },
+
     inputStyle: {
-        paddingLeft: 10
+        paddingLeft: 10,
+        paddingRight: 10,
     },
 
     viewDobStyle: {

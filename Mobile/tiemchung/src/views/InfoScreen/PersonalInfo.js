@@ -5,6 +5,8 @@ import database from '@react-native-firebase/database';
 import { connect } from 'react-redux';
 import { Button, Text, InputField } from '../../components';
 import { Picker } from '@react-native-picker/picker';
+import { DateTimePicker } from 'react-native-ui-lib';
+import { dateFormat } from '../../util';
 import styles from './styles';
 
 const PersonalInfo = (props) => {
@@ -18,6 +20,10 @@ const PersonalInfo = (props) => {
     const [city, setCity] = useState(props.user.address.city);
     const [commune, setCommune] = useState(props.user.address.commune);
     const [details, setDetails] = useState(props.user.address.details);
+
+    var dateParts = dob.split("/");
+    // month is 0-based, that's why we need dataParts[1] - 1
+    var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
 
     const updateData = () => {
         database().ref("/users/" + auth().currentUser.uid).update({
@@ -46,7 +52,7 @@ const PersonalInfo = (props) => {
                 labelStyle={styles.labelStyles}
                 onChangeText={setName}
             />
-            <Text style={styles.titleStyles}>Giới tính</Text>
+            <Text style={styles.titleGenderStyles}>Giới tính</Text>
             <Picker
                 selectedValue={gender}
                 onValueChange={(itemValue) =>
@@ -57,12 +63,15 @@ const PersonalInfo = (props) => {
                 <Picker.Item style={{ fontSize: 18 }} label="Khác" value="Khác" />
             </Picker>
 
-            <InputField
-                inputStyle={styles.inputStyle}
-                label="Ngày tháng năm sinh"
-                value={dob}
-                labelStyle={styles.labelStyles}
-                onChangeText={setDob}
+            <DateTimePicker
+                containerStyle={styles.inputStyle}
+                underlineColor={'#778899'}
+                title={'Ngày tháng năm sinh'}
+                titleStyle={styles.titleDobStyles}
+                mode={'date'}
+                dateFormat={"DD/MM/YYYY"}
+                value={dateObject}
+                onChange={(value) => { setDob(dateFormat(value.toDateString(), 'dd/MM/yyyy')) }}
             />
             <InputField
                 inputStyle={styles.inputStyle}
