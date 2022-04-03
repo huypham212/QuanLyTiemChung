@@ -13,13 +13,13 @@ const VaccineCalendar = (props) => {
 
     const fetchData = () => {
         props.dispatch(ActionCreator.getVaccineCalendar(auth().currentUser.uid));
-        console.log(props.vaccineCalendar);
+        //console.log(props.vaccineCalendar);
         setLoading(false);
     }
 
     React.useEffect(() => {
         fetchData();
-        console.log(props.vaccineCalendar);
+        //console.log(props.vaccineCalendar);
     }, [])
 
     return (

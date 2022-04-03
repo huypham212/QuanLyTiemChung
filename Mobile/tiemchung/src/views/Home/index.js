@@ -58,7 +58,7 @@ const HomeScreen = (props) => {
                                     name: "info",
                                     color: "#228B22",
                                     type: "font-awesome-5",
-                                    size: 25,
+                                    size: 23,
                                 }}
                                 iconPosition='top'
                                 iconContainerStyle={{ marginBottom: 10 }}
@@ -74,12 +74,14 @@ const HomeScreen = (props) => {
                                     name: "file-medical",
                                     color: "#228B22",
                                     type: "font-awesome-5",
-                                    size: 25,
+                                    size: 23,
                                 }}
                                 iconPosition='top'
                                 iconContainerStyle={{ marginBottom: 10 }}
                                 buttonStyle={styles.buttonStyle}
-                                titleStyle={{ color: "#000000", fontSize: 14 }} />
+                                titleStyle={{ color: "#000000", fontSize: 14 }}
+                                onPress={() => props.navigation.navigate('InjectedRegistration')}
+                            />
 
                             <Button
                                 title="Lịch tiêm"
@@ -88,7 +90,7 @@ const HomeScreen = (props) => {
                                     name: "calendar-alt",
                                     color: "#8B8989",
                                     type: "font-awesome-5",
-                                    size: 25,
+                                    size: 23,
                                 }}
                                 iconPosition='top'
                                 iconContainerStyle={{ marginBottom: 10 }}
@@ -105,7 +107,7 @@ const HomeScreen = (props) => {
                                     name: "map-marker-alt",
                                     color: "#FF0000",
                                     type: "font-awesome-5",
-                                    size: 25,
+                                    size: 23,
                                 }}
                                 iconPosition='top'
                                 iconContainerStyle={{ marginBottom: 10 }}
@@ -121,12 +123,12 @@ const HomeScreen = (props) => {
                                     name: "exclamation-circle",
                                     color: "#FFC125",
                                     type: "font-awesome-5",
-                                    size: 25,
+                                    size: 23,
                                 }}
                                 iconPosition='top'
                                 iconContainerStyle={{ marginBottom: 10 }}
                                 buttonStyle={styles.buttonStyle}
-                                titleStyle={{ color: "#000000", fontSize: 13 }}
+                                titleStyle={{ color: "#000000", fontSize: 14 }}
                                 onPress={() => props.navigation.navigate('SideEffect')}
                             />
 
@@ -137,7 +139,7 @@ const HomeScreen = (props) => {
                                     name: "cogs",
                                     color: "#000000",
                                     type: "font-awesome-5",
-                                    size: 25,
+                                    size: 23,
                                 }}
                                 iconPosition='top'
                                 iconContainerStyle={{ marginBottom: 10 }}
