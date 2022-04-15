@@ -2,56 +2,57 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import { ListItem } from 'react-native-elements'
 import { Text, Icon } from '../../components'
+import { connect } from 'react-redux';
+import * as ActionCreator from '../../redux/actions';
 import styles from './styles'
 
-const DetailCalendar = () => {
-
-    const dataList = [
+const DetailCalendar = (props) => {
+    const data = [
         {
-            title: "Phạm Nguyễn Thanh Huy",
-            subtitle: "Họ và tên người đăng ký",
+            title: "Họ và tên người đăng ký",
+            subtitle: props.userInfo.name,
             icon: "user-alt"
         },
         {
-            title: "02/01/2000",
-            subtitle: "Ngày tháng năm sinh",
+            title: "Ngày tháng năm sinh",
+            subtitle: props.userInfo.dob,
             icon: "calendar-alt"
         },
         {
             title: "Giới tính",
-            subtitle: "Nam",
+            subtitle: props.userInfo.gender,
             icon: "venus-mars"
         },
         {
             title: "CMND/CCCD/Hộ chiếu",
-            subtitle: "123456789",
+            subtitle: props.userInfo.idCard,
             icon: "id-card"
         },
         {
             title: "Tỉnh/Thành phố",
-            subtitle: "Tỉnh Khánh Hòa",
+            subtitle: props.userInfo.address.province,
             icon: "map-marker-alt"
         },
         {
             title: "Quận/Huyện",
-            subtitle: "Thành phố Nha Trang",
+            subtitle: props.userInfo.address.city,
             icon: "map-marker-alt"
         },
         {
             title: "Phường/Xã",
-            subtitle: "Xã Vĩnh Thạnh",
+            subtitle: props.userInfo.address.commune,
             icon: "map-marker-alt"
         },
         {
             title: "Địa chỉ nơi ở",
-            subtitle: "Tổ 2, thôn Phú Trung",
+            subtitle: props.userInfo.address.details,
             icon: "map-marker-alt"
         }
     ]
 
     return (
         <ScrollView>
-            {dataList.map((l, i) => (
+            {data.map((l, i) => (
                 <ListItem key={i} style={styles.detailStyle} bottomDivider>
                     <Icon name={l.icon} type="font-awesome-5" color="#000000" />
                     <ListItem.Content>
@@ -64,4 +65,10 @@ const DetailCalendar = () => {
     )
 }
 
-export default DetailCalendar
+const mapStateToProps = (state) => {
+    return {
+        userInfo: state.appState.user
+    }
+}
+
+export default connect(mapStateToProps)(DetailCalendar)

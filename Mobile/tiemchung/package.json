@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/datetimepicker": "^6.1.1",
     "@react-native-community/eslint-config": "^3.0.1",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-firebase/app": "^14.5.0",
@@ -31,6 +32,7 @@
     "react-native-reanimated": "^2.4.1",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.12.0",
+    "react-native-ui-lib": "^6.11.3",
     "react-native-vector-icons": "^9.1.0",
     "react-native-web": "0.17.1",
     "react-navigation": "^4.4.4",
@@ -38,6 +40,7 @@
     "redux": "^4.1.2",
     "redux-async-thunk": "^1.0.5",
     "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.4.1",
     "rooks": "^5.10.0"
   },
   "devDependencies": {

@@ -1,21 +1,43 @@
-import { SIGN_IN, SIGN_OUT } from '../constants';
+import { SIGN_IN, SIGN_OUT, GET_USER, GET_VACCINE_CALENDAR } from '../constants';
 
 let initialState = {
-  isSignout: false
+  isLogin: false,
+  user: {},
+  vaccineCalendar: []
 };
+
+const getUser = () => {
+  //const [userData, setUserData] = useState({});
+  const userData = database().ref('/users/' + auth().currentUser.uid).once('value');
+  const snapshot = userData.then(snapshot => snapshot.val())
+  console.log(snapshot);
+}
 
 const countReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SIGN_IN':
+    case SIGN_IN:
       state = {
         ...state,
-        isSignout: true
+        isLogin: action.isLogin,
       }
       break;
-    case 'SIGN_OUT':
+    case SIGN_OUT:
       state = {
         ...state,
-        isSignout: false
+        user: action.user,
+        isLogin: action.isLogin,
+      }
+      break;
+    case GET_USER:
+      state = {
+        ...state,
+        user: action.user
+      }
+      break;
+    case GET_VACCINE_CALENDAR:
+      state = {
+        ...state,
+        vaccineCalendar: action.vaccineCalendar
       }
       break;
   }

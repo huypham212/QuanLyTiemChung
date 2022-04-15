@@ -6,61 +6,26 @@ import {
     ScrollView
 } from 'react-native';
 import { InputField, Button, Text, Icon, Checkbox } from '../../components';
-import auth from '@react-native-firebase/auth';
+import { connect } from 'react-redux';
 import styles from './styles';
+import { useSignUp } from '../../hooks';
 
-const SignUpScreen = ({ navigation }) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
-    const [cfrPassword, setCfrPassword] = useState('')
-    const [emailError, setEmailError] = useState('')
-    const [passError, setPassError] = useState('')
-    const [cfrPassError, setCfrPassError] = useState('')
+const SignUpScreen = (props) => {
+
+    const [credential, error, handleChange, signUp] = useSignUp()
     const [accept, setAccept] = useState(false)
     const [showPass, setShowPass] = useState(true)
     const [showCfrPass, setShowCfrPass] = useState(true)
 
-    const signUp = () => {
-        if (email === '' || password === '' || cfrPassword === '') {
-            setEmailError('Vui lòng nhập email!')
-            setPassError('Vui lòng nhập mật khẩu!')
-            setCfrPassError('Vui lòng xác nhận mật khẩu!')
-        }
-
-        if (email != '' && password != '' && cfrPassword != '') {
-            if (email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
-                if (password.length < 6) {
-                    setPassError('Mật khẩu phải chứa ít nhất 6 ký tự!')
-                } else {
-                    if (cfrPassword != password) {
-                        setPassError('Mật khẩu không trùng khớp!')
-                        setCfrPassError('Mật khẩu không trùng khớp!')
-                    }
-                    else {
-                        //console.log(e, pass)
-                        auth().createUserWithEmailAndPassword(email, password).then(data => {
-                            console.log(data);
-                            navigation.navigate('Đăng nhập');
-                        }).catch(error => {
-                            Alert.alert('Email đã tồn tại!');
-                        })
-                    }
-                }
-            }
-            else {
-                setEmailError('Email không hợp lệ!')
-            }
-
-
+    const handleSignUp = async () => {
+        try {
+            const user = await signUp();
+            props.navigation.navigate('SignIn');
+        } catch (error) {
+            //TODO: Handle Error;
+            console.error(error)
         }
     }
-
-    const resetErr = () => {
-        setEmailError('')
-        setPassError('')
-        setCfrPassError('')
-    }
-
     return (
         <ScrollView style={styles.container}>
             <View style={styles.contentContainer}>
@@ -68,21 +33,23 @@ const SignUpScreen = ({ navigation }) => {
                 <InputField
                     inputStyle={styles.inputStyles}
                     labelStyle={styles.labelStyles}
-                    value={email}
-                    errorMessage={emailError}
+                    value={credential.email}
+                    errorMessage={error.email}
                     label="Email"
                     placeholder="Vui lòng nhập email"
-                    onChangeText={setEmail}
-                    onFocus={() => resetErr()} />
+                    onChangeText={(value) => {
+                        handleChange("email", value)
+                    }} />
                 <InputField
                     style={styles.inputStyles}
                     labelStyle={styles.labelStyles}
-                    value={password}
-                    errorMessage={passError}
+                    value={credential.password}
+                    errorMessage={error.password}
                     label="Mật Khẩu"
                     secureTextEntry={showPass}
-                    onChangeText={setPassword}
-                    onFocus={() => resetErr()}
+                    onChangeText={(value) => {
+                        handleChange("password", value)
+                    }}
                     rightIcon={
                         showPass ? (
                             <Icon
@@ -102,12 +69,13 @@ const SignUpScreen = ({ navigation }) => {
                 <InputField
                     style={styles.inputStyles}
                     labelStyle={styles.labelStyles}
-                    value={cfrPassword}
-                    errorMessage={cfrPassError}
+                    value={credential.confirmPassword}
+                    errorMessage={error.confirmPassword}
                     label="Xác nhận mật Khẩu"
                     secureTextEntry={showCfrPass}
-                    onChangeText={setCfrPassword}
-                    onFocus={() => resetErr()}
+                    onChangeText={(value) => {
+                        handleChange("confirmPassword", value)
+                    }}
                     rightIcon={
                         showCfrPass ? (
                             <Icon
@@ -134,14 +102,13 @@ const SignUpScreen = ({ navigation }) => {
                         title="Tiếp tục"
                         titleStyle={{ fontSize: 20 }}
                         buttonStyle={styles.btnStyle}
-                        onPress={() => signUp(email, password, cfrPassword)}
+                        onPress={handleSignUp}
                     />
                 ) : (
                     <Button
                         title="Tiếp tục"
                         buttonStyle={styles.btnStyle}
                         disabled="true"
-                        onPress={() => signUp(email, password, cfrPassword)}
                     />
                 )}
             </View>
@@ -149,4 +116,4 @@ const SignUpScreen = ({ navigation }) => {
     )
 }
 
-export default SignUpScreen;
+export default connect()(SignUpScreen);

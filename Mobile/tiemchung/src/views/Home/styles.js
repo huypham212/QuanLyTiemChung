@@ -1,11 +1,10 @@
-import React from 'react'
 import { StyleSheet, Dimensions } from 'react-native'
 
 const styles = StyleSheet.create({
     cardContainer: {
         borderRadius: 20,
-        height: Dimensions.get('window').height * 0.92
-        //marginTop: 35
+        height: Dimensions.get('window').height,
+        //marginTop: 25
     },
 
     cardTopContainer: {
@@ -20,7 +19,7 @@ const styles = StyleSheet.create({
     cardTitle: {
         fontSize: 25,
         color: '#FFFFFF',
-        marginBottom: 20
+        //marginBottom: 20
     },
 
     imageView: {
@@ -30,25 +29,24 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        width: 200,
-        height: 200,
+        width: Dimensions.get('window').height * 0.33,
+        height: Dimensions.get('window').height * 0.33,
         borderRadius: 10,
     },
 
     infoView: {
-        marginTop: 5,
-        marginBottom: 20
+        marginTop: 0,
     },
 
     nameUser: {
-        fontSize: 30,
+        fontSize: 25,
         color: '#000000',
         fontWeight: '400',
         textAlign: 'center'
     },
 
     infoUser: {
-        fontSize: 25,
+        fontSize: 20,
         color: '#000000',
         justifyContent: 'center',
         textAlign: 'center',
@@ -58,18 +56,22 @@ const styles = StyleSheet.create({
     buttonContainerStyle: {
         width: 100,
         height: 75,
-        marginRight: 20,
+        //marginRight: 10,
         marginTop: 25,
-        borderRadius: 10
+        borderRadius: 10,
     },
 
     buttonView: {
         flexDirection: 'row',
+        marginLeft: -10,
+        //marginTop: 25,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 
     buttonStyle: {
         backgroundColor: '#FFFFFF',
-    },
+    }
 })
 
 export default styles;

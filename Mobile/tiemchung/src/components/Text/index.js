@@ -13,7 +13,7 @@ Text_Field.propTypes = {
     label: PropTypes.string,
     errorMessage: PropTypes.string,
     disabled: PropTypes.bool,
-    onChangeText: PropTypes.func,
+    onPress: PropTypes.func,
     style: PropTypes.object
 };
 
