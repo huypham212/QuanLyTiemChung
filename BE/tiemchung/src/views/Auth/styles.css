@@ -1,0 +1,35 @@
+#app-login {
+  margin: 51.5px 0px;
+}
+
+.login-form h2 {
+  font-family: SFProDisplay-Bold;
+  text-align: center;
+  font-size: 28px !important;
+  color: #233329;
+  justify-content: center;
+}
+
+.login-form {
+  display: grid;
+  justify-items: center;
+}
+
+.login-form label {
+  color: #6b778c;
+  font-family: SFProDisplay-Regular;
+  font-weight: 300;
+}
+
+.form-elements {
+  margin: 10px 0px;
+}
+
+.form-input {
+  margin-top: 5px;
+  width: 300px;
+}
+
+.form-button {
+  margin: 0px 10px;
+}
