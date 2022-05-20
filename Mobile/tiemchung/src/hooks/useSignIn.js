@@ -22,10 +22,11 @@ const useSignIn = () => {
     }
 
     const signIn = async () => {
+
         const isValid = validateCredential()
         if (!isValid) return Promise.reject();
 
-        return await auth().signInWithEmailAndPassword(email, password);
+        return await auth().signInWithEmailAndPassword(email, password)
 
     }
 

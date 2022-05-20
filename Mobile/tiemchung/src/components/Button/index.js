@@ -14,7 +14,7 @@ ComponentButton.propTypes = {
     title: PropTypes.string,
     onPress: PropTypes.func,
     loading: PropTypes.bool,
-    disable: PropTypes.bool,
+    disabled: PropTypes.bool,
     icon: PropTypes.object,
     iconPosition: PropTypes.oneOf([
         'left', 'right', 'top', 'bottom'
