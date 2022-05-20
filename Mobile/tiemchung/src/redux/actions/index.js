@@ -1,5 +1,6 @@
-import { SIGN_IN, SIGN_OUT, GET_USER, GET_VACCINE_CALENDAR } from '../constants';
+import { SIGN_IN, SIGN_OUT, GET_USER, GET_VACCINE_CALENDAR, POST_VACCINE_CALENDAR } from '../constants';
 import database from '@react-native-firebase/database';
+import auth from '@react-native-firebase/auth';
 
 export function signIn() {
   return async function (dispatch, getState) {
@@ -38,6 +39,15 @@ export function getVaccineCalendar(uid) {
         type: GET_VACCINE_CALENDAR,
         vaccineCalendar: snapshot.val()
       })
+    })
+  }
+}
+
+export function postVaccineCalendar(info) {
+  return async function (dispatch, getState) {
+    dispatch({
+      type: POST_VACCINE_CALENDAR,
+      injectedInfo: info
     })
   }
 }
