@@ -17,7 +17,7 @@ const SignInScreen = (props) => {
 
     const handleSignIn = async () => {
         try {
-            const { user } = await signIn();
+            const user = await signIn();
             props.dispatch(ActionCreator.signIn());
         } catch (error) {
             if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password')

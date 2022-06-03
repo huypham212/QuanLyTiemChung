@@ -31,6 +31,9 @@ const InjectedRegistration = ({ navigation }) => {
     }
 
     const renderPreviousButton = () => {
+        const isDisabled = activeIndex === 0 ? true : false
+
+        console.log(isDisabled)
         return (
             <Button
                 title="Quay lại"
@@ -38,6 +41,7 @@ const InjectedRegistration = ({ navigation }) => {
                 iconPosition='left'
                 buttonStyle={{ backgroundColor: '#FFFFFF' }}
                 onPress={() => goToPreviousStep()}
+                disabled={isDisabled}
             />
         )
     }
@@ -50,7 +54,7 @@ const InjectedRegistration = ({ navigation }) => {
                 title={title}
                 titleStyle={{ fontSize: 20, color: '#000000' }}
                 iconPosition='right'
-                buttonStyle={{ backgroundColor: '#FFFFFF' }}
+                buttonStyle={{ backgroundColor: '#4CC552' }}
                 onPress={() => goToNextStep()}
             />
         )
@@ -90,9 +94,9 @@ const InjectedRegistration = ({ navigation }) => {
             </Wizard>
             {renderCurrentStep()}
 
-            <View>
-                {renderNextButton()}
+            <View style={styles.btnStyle}>
                 {renderPreviousButton()}
+                {renderNextButton()}
             </View>
         </ScrollView>
     )

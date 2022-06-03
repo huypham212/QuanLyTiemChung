@@ -7,9 +7,7 @@ import database from '@react-native-firebase/database';
 import store from '../../redux';
 import { connect } from 'react-redux';
 import styles from './styles';
-import { connect } from 'react-redux';
 import * as ActionCreator from '../../redux/actions';
-import auth from '@react-native-firebase/auth';
 
 const HomeScreen = (props) => {
 

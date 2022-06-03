@@ -7,9 +7,14 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
 
-    labelStyles: {
+    labelDisabledStyles: {
         fontSize: 18,
         color: '#888888',
+    },
+
+    labelEnableStyle: {
+        fontSize: 18,
+        color: '#000000'
     },
 
     titleGenderStyles: {
@@ -25,10 +30,25 @@ const styles = StyleSheet.create({
         color: '#888888',
     },
 
+    titleDateRegisStyles: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#000000',
+    },
+
     inputStyle: {
         paddingLeft: 10,
         paddingRight: 10,
     },
+
+    btnStyle: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginLeft: 10,
+        marginRight: 10,
+        marginBottom: 5
+    }
 })
 
 export default styles

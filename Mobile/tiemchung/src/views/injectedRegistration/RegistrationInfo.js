@@ -6,48 +6,52 @@ import { Button, Text, InputField } from "../../components";
 import styles from './styles';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
+import * as ActionCreator from '../../redux/actions';
 import { dateFormat } from '../../util';
 import { connect } from 'react-redux';
 
 const RegistrationInfo = (props) => {
-    const [name, setName] = React.useState(props.user.name);
-    const [gender, setGender] = React.useState(props.user.gender);
-    const [dob, setDob] = React.useState(props.user.dob);
-    const [idCard, setIdCard] = React.useState(props.user.idCard);
-    const [phone, setPhone] = React.useState(props.user.phone);
-    const [email, setEmail] = React.useState(props.user.email);
-    const [province, setProvince] = React.useState(props.user.address.province);
-    const [city, setCity] = React.useState(props.user.address.city);
-    const [commune, setCommune] = React.useState(props.user.address.commune);
-    const [details, setDetails] = React.useState(props.user.address.details);
+    const [dateRegistration, setDateRegistration] = React.useState(new Date());
+    const [injectedLocation, setInjectedLocation] = React.useState("TYT xã Vĩnh Thạnh");
 
-    var dateParts = dob.split("/");
-    // month is 0-based, that's why we need dataParts[1] - 1
+    var dateParts = props.user.dob.split("/");
     var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
 
+    const onChangeDate = (date) => {
+        if (date <= new Date()) {
+            alert("Ngày đăng ký tiêm không hợp lệ!")
+            setDateRegistration(new Date())
+            return;
+        }
+
+        const info = [{
+            "createAt": new Date(),
+            "registrationDate": dateFormat(JSON.stringify(date).substring(1, 11), 'dd/MM/yyyy'),
+            "registrationTime": "Buổi sáng",
+            "status": "No Injected",
+            "vaccineName": "COVID-19 VACCINE AstraZeneca"
+        }]
+        props.dispatch(ActionCreator.postVaccineCalendar(info));
+    }
 
     return (
         <ScrollView style={styles.viewContainers}>
             <InputField
                 inputStyle={styles.inputStyle}
                 label="Họ và tên"
-                value={name}
-                labelStyle={styles.labelStyles}
-                onChangeText={setName}
+                value={props.user.name}
+                labelStyle={styles.labelDisabledStyles}
                 disabled
             />
             <Text style={styles.titleGenderStyles}>Giới tính</Text>
             <Picker
-                selectedValue={gender}
+                selectedValue={props.user.gender}
                 enabled={false}
                 style={{ color: '#808080' }}
-                onValueChange={(itemValue) =>
-                    setGender(itemValue)}
             >
                 <Picker.Item style={{ fontSize: 18 }} label="Nam" value="Nam" />
                 <Picker.Item style={{ fontSize: 18 }} label="Nữ" value="Nữ" />
                 <Picker.Item style={{ fontSize: 18 }} label="Khác" value="Khác" />
-
             </Picker>
 
             <DateTimePicker
@@ -60,63 +64,74 @@ const RegistrationInfo = (props) => {
                 value={dateObject}
                 editable={false}
                 style={{ color: '#808080' }}
-                onChange={(value) => { setDob(dateFormat(value.toDateString(), 'dd/MM/yyyy')) }}
             />
             <InputField
                 inputStyle={styles.inputStyle}
                 label="CMND/CCCD/Hộ chiếu"
-                value={idCard}
-                labelStyle={styles.labelStyles}
-                onChangeText={setIdCard}
+                value={props.user.idCard}
+                labelStyle={styles.labelDisabledStyles}
                 disabled
             />
             <InputField
                 inputStyle={styles.inputStyle}
                 label="Điện thoại"
-                value={phone}
-                labelStyle={styles.labelStyles}
-                onChangeText={setPhone}
+                value={props.user.phone}
+                labelStyle={styles.labelDisabledStyles}
                 disabled
             />
             <InputField
                 inputStyle={styles.inputStyle}
                 label="Email"
-                value={email}
-                labelStyle={styles.labelStyles}
-                onChangeText={setEmail}
+                value={props.user.email}
+                labelStyle={styles.labelDisabledStyles}
                 disabled
             />
             <InputField
                 inputStyle={styles.inputStyle}
                 label="Tỉnh/Thành phố"
-                value={province}
-                labelStyle={styles.labelStyles}
-                onChangeText={setProvince}
+                value={props.user.address.province}
+                labelStyle={styles.labelDisabledStyles}
                 disabled
             />
             <InputField
                 inputStyle={styles.inputStyle}
                 label="Quận/Huyện"
-                value={city}
-                labelStyle={styles.labelStyles}
-                onChangeText={setCity}
+                value={props.user.address.city}
+                labelStyle={styles.labelDisabledStyles}
                 disabled
             />
             <InputField
                 inputStyle={styles.inputStyle}
                 label="Xã/Phường"
-                value={commune}
-                labelStyle={styles.labelStyles}
-                onChangeText={setCommune}
+                value={props.user.address.commune}
+                labelStyle={styles.labelDisabledStyles}
                 disabled
             />
             <InputField
                 inputStyle={styles.inputStyle}
                 label="Địa chỉ nơi ở"
-                value={details}
-                labelStyle={styles.labelStyles}
-                onChangeText={setDetails}
+                value={props.user.address.details}
+                labelStyle={styles.labelDisabledStyles}
                 disabled
+            />
+            <DateTimePicker
+                containerStyle={styles.inputStyle}
+                underlineColor={'#778899'}
+                title={'Ngày đăng ký tiêm'}
+                titleStyle={styles.titleDateRegisStyles}
+                mode={'date'}
+                dateFormat={"DD/MM/YYYY"}
+                value={dateRegistration}
+                editable={true}
+                style={{ color: '#000000' }}
+                onChange={(value) => { onChangeDate(value) }}
+            />
+            <InputField
+                inputStyle={styles.inputStyle}
+                label="Nơi đăng ký tiêm"
+                value={injectedLocation}
+                labelStyle={styles.labelEnableStyle}
+                onChangeText={setInjectedLocation}
             />
         </ScrollView>
     )
@@ -124,7 +139,8 @@ const RegistrationInfo = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.appState.user
+        user: state.appState.user,
+        injectedInfo: state.appState.injectedInfo
     }
 }
 
