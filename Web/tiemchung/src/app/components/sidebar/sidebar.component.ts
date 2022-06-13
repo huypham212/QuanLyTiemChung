@@ -8,13 +8,11 @@ declare interface RouteInfo {
   class: string;
 }
 export const ROUTES: RouteInfo[] = [
-  { path: '/dashboard', title: 'Dashboard', icon: 'ni-tv-2 text-primary', class: '' },
-  { path: '/user', title: 'Quản lý người dùng', icon: 'ni-planet text-blue', class: '' },
-  { path: '/vaccine', title: 'Quản lý vaccine', icon: 'ni-pin-3 text-orange', class: '' },
-  { path: '/location', title: 'Quản lý địa điểm tiêm', icon: 'ni-single-02 text-yellow', class: '' },
-  { path: '/registration', title: 'Quản lý đăng ký tiêm', icon: 'ni-key-25 text-info', class: '' },
-  { path: '/histories', title: 'Quản lý lịch sử tiêm', icon: 'ni-bullet-list-67 text-red', class: '' },
-  { path: '/plan', title: 'Quản lý kế hoạch tiêm', icon: 'ni-key-25 text-info', class: '' },
+  { path: '/dashboard', title: 'Dashboard', icon: 'ni ni-tv-2 text-primary', class: '' },
+  { path: '/user', title: 'Quản lý người dùng', icon: 'ni ni-single-02 text-yellow', class: '' },
+  { path: '/vaccine', title: 'Quản lý vaccine', icon: 'fas fa-syringe text-green', class: '' },
+  { path: '/location', title: 'Quản lý địa điểm tiêm', icon: 'ni ni-pin-3 text-orange', class: '' },
+  { path: '/plan', title: 'Quản lý kế hoạch tiêm', icon: 'ni ni-collection text-info', class: '' },
 ];
 
 @Component({
@@ -35,4 +33,5 @@ export class SidebarComponent implements OnInit {
       this.isCollapsed = true;
     });
   }
+
 }
