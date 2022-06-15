@@ -348,7 +348,7 @@ $h5-font-size:                $font-size-base * .8125 !default;
 $h6-font-size:                $font-size-base * .625 !default;
 
 
-$headings-margin-bottom:       math.div($spacer, 2);
+$headings-margin-bottom:      math.div($spacer, 2);
 $headings-font-family:        inherit !default;
 $headings-font-weight:        $font-weight-bold !default;
 $headings-line-height:        1.5 !default;
@@ -433,12 +433,12 @@ $table-head-bg:               $gray-100 !default;
 $table-head-color:            $gray-600 !default;
 $table-head-spacer-y:         .75rem !default;
 
-$table-head-font-size:        .65rem !default;
+$table-head-font-size:        15px !default;
 $table-head-font-weight:      $font-weight-bold !default;
 $table-head-text-transform:   uppercase !default;
 $table-head-letter-spacing:   1px !default;
 
-$table-body-font-size:        .8125rem !default;
+$table-body-font-size:        15px !default;
 
 $table-dark-bg:               theme-color("default") !default;
 $table-dark-accent-bg:        rgba($white, .05) !default;
@@ -633,11 +633,6 @@ $chart-legend-height: $chart-legend-margin-top + $chart-legend-font-size * $line
 
 
 
-
-// Map
-$map-height: 500px !default;
-
-
 // No UI Slider
 
 $noui-target-bg:                  #eceeef !default;
@@ -699,8 +694,8 @@ $navbar-padding-x:                  1rem !default;
 $navbar-nav-link-padding-x:         1rem !default;
 $navbar-nav-link-padding-y:         1rem !default;
 
-$navbar-nav-link-font-size:         .9rem !default;
-$navbar-nav-link-font-weight:       400 !default;
+$navbar-nav-link-font-size:         1.2rem !default;
+$navbar-nav-link-font-weight:       700 !default;
 $navbar-nav-link-text-transform:    normal !default;
 $navbar-nav-link-letter-spacing:    0 !default;
 $navbar-nav-link-border-radius:     $border-radius !default;
@@ -744,7 +739,7 @@ $navbar-search-light-focus-color:    rgba(0, 0, 0, .9) !default;
 
 // Vertical navbar
 $navbar-vertical-box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15) !important;
-$navbar-vertical-width: 250px !default;
+$navbar-vertical-width: 350px !default;
 $navbar-vertical-padding-x: 1.5rem !default;
 $navbar-vertical-nav-link-padding-x:  1.5rem !default;
 $navbar-vertical-nav-link-padding-y:  .65rem !default;

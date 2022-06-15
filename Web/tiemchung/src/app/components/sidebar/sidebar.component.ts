@@ -8,7 +8,7 @@ declare interface RouteInfo {
   class: string;
 }
 export const ROUTES: RouteInfo[] = [
-  { path: '/dashboard', title: 'Dashboard', icon: 'ni ni-tv-2 text-primary', class: '' },
+  { path: '/', title: 'Dashboard', icon: 'ni ni-tv-2 text-primary', class: '' },
   { path: '/user', title: 'Quản lý người dùng', icon: 'ni ni-single-02 text-yellow', class: '' },
   { path: '/vaccine', title: 'Quản lý vaccine', icon: 'fas fa-syringe text-green', class: '' },
   { path: '/location', title: 'Quản lý địa điểm tiêm', icon: 'ni ni-pin-3 text-orange', class: '' },
@@ -23,7 +23,7 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
 
   public menuItems: any[];
-  public isCollapsed = true;
+  public isCollapsed = false;
 
   constructor(private router: Router) { }
 

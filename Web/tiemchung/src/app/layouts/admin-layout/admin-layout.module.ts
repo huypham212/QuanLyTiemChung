@@ -13,17 +13,22 @@ import { InjectedLocationComponent } from './../../pages/injected-location/injec
 import { InjectedHistoriesComponent } from './../../pages/injected-histories/injected-histories.component';
 import { InjectedPlanComponent } from './../../pages/injected-plan/injected-plan.component';
 import { InjectedRegistrationComponent } from './../../pages/injected-registration/injected-registration.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-// import { ToastrModule } from 'ngx-toastr';
+import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.component';
+import { NgbModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    NgbDatepickerModule,
+    ClipboardModule,
+    ToastrModule
   ],
   declarations: [
     DashboardComponent,
@@ -32,7 +37,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     InjectedLocationComponent,
     InjectedPlanComponent,
     InjectedRegistrationComponent,
-    VaccineComponent
+    VaccineComponent,
+    UserProfileComponent
   ]
 })
 
