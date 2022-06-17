@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "qltc-57440": {
+      "hosting": {
+        "tiemchung": [
+          "qltc-57440"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "qltc-57440"
+  }
+}

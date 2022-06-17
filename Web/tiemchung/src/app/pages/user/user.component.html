@@ -1,0 +1,92 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">DANH SÁCH NGƯỜI DÙNG</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>NO.</th>
+                                <th scope="col">Họ tên</th>
+                                <th scope="col">CMND/CCCD/Hộ chiếu</th>
+                                <th scope="col">Ngày sinh</th>
+                                <th scope="col">Giới tính</th>
+                                <th scope="col">Số điện thoại</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Địa chỉ</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of arrayData | slice:(page-1) * pageSize : page * pageSize">
+                                <td>
+                                    {{arrayData.indexOf(item) + 1}}
+                                </td>
+                                <td>
+                                    {{item[1].name}}
+                                </td>
+                                <td>
+                                    {{item[1].idCard}}
+                                </td>
+                                <td>
+                                    {{item[1].dob}}
+                                </td>
+                                <td>
+                                    {{item[1].gender}}
+                                </td>
+                                <td>
+                                    {{item[1].phone}}
+                                </td>
+                                <td>
+                                    {{item[1].email}}
+                                </td>
+                                <td>
+                                    {{item[1].address.details + ", " + item[1].address.commune + ", " +
+                                    item[1].address.city + ", " +
+                                    item[1].address.province}}
+                                </td>
+                                <td class="text-right">
+                                    <div ngbDropdown>
+                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div ngbDropdownMenu class="dropdown-menu-arrow">
+                                            <a class="dropdown-item" (click)="histories(item[0])">Xem lịch sử
+                                                mũi tiêm</a>
+                                            <a class="dropdown-item" (click)="registration(item[0])">Xem danh
+                                                sách đăng ký
+                                                tiêm</a>
+                                            <a class="dropdown-item" (click)="updateUser(item[0])">Sửa thông
+                                                tin</a>
+                                            <a class="dropdown-item" (click)="deleteUser(item[0])">Xóa</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card-footer">
+                    <nav aria-label="...">
+                        <ngb-pagination class="d-flex justify-content-center" size="lg" [(page)]="page"
+                            [pageSize]="pageSize" [collectionSize]="arrayData.length" [boundaryLinks]="true">
+                        </ngb-pagination>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

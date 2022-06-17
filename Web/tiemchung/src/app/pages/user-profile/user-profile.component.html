@@ -1,0 +1,84 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="min-height: 400px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+</div>
+<div class="container-fluid mt--7">
+  <div class="card bg-secondary shadow">
+    <div class="card-header bg-white border-0">
+      <h3 class="mb-0">Thông tin người dùng</h3>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-username">Họ Tên</label>
+                <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="Full name"
+                  value="Phạm Nguyễn Thanh Huy">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-email">Email address</label>
+                <input type="email" id="input-email" class="form-control form-control-alternative"
+                  placeholder="thanhhuy2120@gmail.com">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-email">Ngày sinh</label>
+                <div (click)="d.toggle()">
+                  <input class="form-control form-control-alternative datepicker" placeholder="dd/mm/yyyy" name="dp"
+                    [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" type="date" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-id-card">CMND/CCCD/Hộ chiếu</label>
+                <input type="text" id="input-id-card" class="form-control form-control-alternative" value="123456789">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="form-control-label" for="input-address">Địa chỉ</label>
+                <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address"
+                  value="Tổ 2, thôn Phú Trung" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="form-control-label" for="input-city">Xã/Phường</label>
+                <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City"
+                  value="xã Vĩnh Thạnh">
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="form-control-label" for="input-city">Quận//Huyện</label>
+                <input type="text" id="input-city" class="form-control form-control-alternative" value="TP.Nha Trang">
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="form-control-label" for="input-province">Tỉnh/Thành phố</label>
+                <input type="text" id="input-province" class="form-control form-control-alternative"
+                  placeholder="tỉnh Khánh Hòa">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
