@@ -22,6 +22,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AuthService } from './services/auth/auth.service';
+import { ToastrModule } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -35,20 +37,26 @@ import { AuthService } from './services/auth/auth.service';
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
-    AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase())
+    provideDatabase(() => getDatabase()),
+    ToastrModule.forRoot({
+      maxOpened: 2,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
   ],
   providers: [
-    AuthService
+    AuthService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

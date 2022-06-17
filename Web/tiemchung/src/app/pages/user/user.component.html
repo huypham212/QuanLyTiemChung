@@ -18,17 +18,22 @@
                     <table class="table table-flush">
                         <thead class="thead-light">
                             <tr>
+                                <th>NO.</th>
                                 <th scope="col">Họ tên</th>
                                 <th scope="col">CMND/CCCD/Hộ chiếu</th>
                                 <th scope="col">Ngày sinh</th>
                                 <th scope="col">Giới tính</th>
                                 <th scope="col">Số điện thoại</th>
+                                <th scope="col">Email</th>
                                 <th scope="col">Địa chỉ</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of arrayData | slice:(page-1) * pageSize : page * pageSize">
+                                <td>
+                                    {{arrayData.indexOf(item) + 1}}
+                                </td>
                                 <td>
                                     {{item[1].name}}
                                 </td>
@@ -45,7 +50,10 @@
                                     {{item[1].phone}}
                                 </td>
                                 <td>
-                                    {{item[1].address.detail + ", " + item[1].address.commune + ", " +
+                                    {{item[1].email}}
+                                </td>
+                                <td>
+                                    {{item[1].address.details + ", " + item[1].address.commune + ", " +
                                     item[1].address.city + ", " +
                                     item[1].address.province}}
                                 </td>
@@ -54,12 +62,15 @@
                                         <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
-                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="javascript:void(0)">Xem lịch sử mũi tiêm</a>
-                                            <a class="dropdown-item" href="javascript:void(1)">Xem danh sách đăng ký
+                                        <div ngbDropdownMenu class="dropdown-menu-arrow">
+                                            <a class="dropdown-item" (click)="histories(item[0])">Xem lịch sử
+                                                mũi tiêm</a>
+                                            <a class="dropdown-item" (click)="registration(item[0])">Xem danh
+                                                sách đăng ký
                                                 tiêm</a>
-                                            <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                            <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
+                                            <a class="dropdown-item" (click)="updateUser(item[0])">Sửa thông
+                                                tin</a>
+                                            <a class="dropdown-item" (click)="deleteUser(item[0])">Xóa</a>
                                         </div>
                                     </div>
                                 </td>
@@ -67,6 +78,7 @@
                         </tbody>
                     </table>
                 </div>
+
                 <div class="card-footer">
                     <nav aria-label="...">
                         <ngb-pagination class="d-flex justify-content-center" size="lg" [(page)]="page"

@@ -7,8 +7,8 @@ import { NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { AuthLayoutComponent } from './auth-layout.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +16,7 @@ import { AuthLayoutComponent } from './auth-layout.component';
     FormsModule,
     ReactiveFormsModule,
     NgbCollapseModule,
+    // ComponentsModule
     // NgbModule
   ],
   declarations: [
@@ -24,7 +25,6 @@ import { AuthLayoutComponent } from './auth-layout.component';
     AuthLayoutComponent
   ],
   providers: [
-    AuthService
   ]
 })
 export class AuthLayoutModule { }

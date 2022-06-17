@@ -14,8 +14,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user', component: UserComponent },
     { path: 'vaccine', component: VaccineComponent },
     { path: 'location', component: InjectedLocationComponent },
-    { path: 'histories', component: InjectedHistoriesComponent },
-    { path: 'registration', component: InjectedRegistrationComponent },
+    { path: 'histories/:id', component: InjectedHistoriesComponent },
+    { path: 'registration/:id', component: InjectedRegistrationComponent },
     { path: 'plan', component: InjectedPlanComponent },
     { path: 'profile', component: UserProfileComponent }
 ];

@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    if (localStorage.getItem('user') == null) {
+    if (localStorage.getItem('user') === null) {
       this.router.navigate(['/auth/login']);
     }
 

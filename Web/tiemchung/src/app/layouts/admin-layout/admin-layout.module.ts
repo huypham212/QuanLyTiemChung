@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ClipboardModule } from 'ngx-clipboard';
@@ -16,6 +16,8 @@ import { InjectedRegistrationComponent } from './../../pages/injected-registrati
 import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.component';
 import { NgbModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+import { ComponentsModule } from 'src/app/components/components.module';
+import { UserUpdateComponent } from 'src/app/components/modal/user/user-update/user-update.component';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
     NgbModule,
     NgbDatepickerModule,
     ClipboardModule,
-    ToastrModule
+    ToastrModule,
+    // ComponentsModule
   ],
   declarations: [
     DashboardComponent,
@@ -38,7 +41,14 @@ import { ToastrModule } from 'ngx-toastr';
     InjectedPlanComponent,
     InjectedRegistrationComponent,
     VaccineComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserUpdateComponent
+  ],
+  providers: [
+    DatePipe
+  ],
+  entryComponents: [
+    UserUpdateComponent
   ]
 })
 
