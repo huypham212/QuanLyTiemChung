@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/users/user.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserUpdateComponent } from 'src/app/components/modal/user/user-update/user-update.component';
+import { UserDeleteComponent } from 'src/app/components/modal/user/user-delete/user-delete.component';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -16,7 +19,7 @@ export class UserComponent implements OnInit {
   arrayData = [];
   rawData: any;
   closeResult: string;
-  constructor(private userService: UserService, private modalService: NgbModal, private router: Router) { }
+  constructor(private userService: UserService, private modalService: NgbModal, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.fetchData();
@@ -43,14 +46,29 @@ export class UserComponent implements OnInit {
     updateModalRef.result.then((res) => {
       console.log(res)
     }, (reason) => { })
+
+    updateModalRef.closed.subscribe((result) => {
+      this.toastr.success('Update user successfully!', 'Success');
+      this.fetchData();
+    });
   }
 
   deleteUser = (id: string) => {
-    this.userService.deleteUser(id).then((res) => {
-      console.log(res);
-    });
+    const deleteModalRef = this.modalService.open(UserDeleteComponent, { ariaLabelledBy: 'modal-basic-title', size: 'lg', centered: true, scrollable: true, backdrop: false });
 
-    this.fetchData();
+    let data = {
+      id: id,
+    }
+
+    deleteModalRef.componentInstance.fromParent = data;
+    deleteModalRef.result.then((res) => {
+      console.log(res)
+    }, (reason) => { })
+
+    deleteModalRef.closed.subscribe((result) => {
+      this.toastr.success('User has been deleted');
+      this.fetchData();
+    });
   }
 
   histories(id: string) {

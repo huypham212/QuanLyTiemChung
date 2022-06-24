@@ -24,6 +24,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AuthService } from './services/auth/auth.service';
 import { ToastrModule } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
+import { VaccineBatchComponent } from './pages/vaccine-batch/vaccine-batch.component';
 
 @NgModule({
   imports: [
@@ -53,6 +54,7 @@ import { DatePipe } from '@angular/common';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    VaccineBatchComponent,
   ],
   providers: [
     AuthService,

@@ -1,1 +1,47 @@
-<p>registration-update works!</p>
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">CẬP NHẬT THÔNG TIN ĐĂNG KÝ TIÊM</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal('Cross click')">&times;</button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="updateRegistrationForm">
+        <div class="pl-lg-4">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-name">Tên điểm tiêm</label>
+                        <input type="text" id="input-name" formControlName="nameLocation" disabled="true"
+                            class="form-control form-control-alternative" value="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-vaccine-name">Tên vaccine</label>
+                        <input type="text" id="input-email" formControlName="vaccineName" disabled="true"
+                            class="form-control form-control-alternative">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-registration-date">Ngày đăng ký</label>
+                        <div>
+                            <input class="form-control form-control-alternative datepicker" disabled="true"
+                                formControlName="registrationDate" placeholder="dd/mm/yyyy" type="date" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-id-card">Trạng thái</label>
+                        <input type="text" id="input-id-card" formControlName="status"
+                            class="form-control form-control-alternative">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSave()">Save</button>
+</div>

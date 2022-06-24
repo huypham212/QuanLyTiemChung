@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from '../../models/user.model';
+// import { User } from '../../models/admin.model';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
@@ -17,24 +17,32 @@ export class VaccineService {
         return this.db.database.ref('/vaccines').once('value');
     }
 
-    getVaccineByBatchNumber = (vaccineName: string, batchNumber: string) => {
-        return this.db.database.ref('/vaccines/' + vaccineName + "/" + batchNumber).once('value');
+    getVaccineByID = (id) => {
+        return this.db.database.ref('/vaccines/' + id).once('value');
     }
 
     createVaccineBatch = (vaccine: any) => {
-        return this.db.database.ref('/vaccines/' + vaccine.vaccineName + "/" + vaccine.batchNumber).set(vaccine);
+        return this.db.database.ref('/vaccines/' + vaccine.vaccineName + "/batchs" + vaccine.batchNumber).set(vaccine);
+    }
+
+    deleteVaccineBatch = (vaccine: any) => {
+        return this.db.database.ref('/vaccines/' + vaccine.vaccineName + "/batchs" + vaccine.batchNumber).remove();
     }
 
     createVaccine = (vaccine: any) => {
-        return this.db.database.ref('/vaccines/').set(vaccine);
+        return this.db.database.ref('/vaccines/').push(vaccine);
+    }
+
+    updateVaccine = (id: string, vaccine: any) => {
+        return this.db.database.ref('/vaccines/' + id).update(vaccine);
     }
 
     updateBatch = (vaccineName: string, batchNumber: string, vaccine: any) => {
-        return this.db.database.ref('/vaccines/' + vaccineName + "/" + batchNumber).update(vaccine);
+        return this.db.database.ref('/vaccines/' + vaccineName + "/batchs" + batchNumber).update(vaccine);
     }
 
-    deleteBatch = (vaccineName: string, batchNumber: string) => {
-        return this.db.database.ref('/vaccines/' + vaccineName + "/" + batchNumber).remove();
+    deleteVaccine = (vaccineName: string) => {
+        return this.db.database.ref('/vaccines/' + vaccineName).remove();
     }
 
 }

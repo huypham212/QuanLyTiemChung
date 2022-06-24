@@ -11,7 +11,15 @@
         <div class="col">
             <div class="card shadow">
                 <div class="card-header border-0">
-                    <h3 class="mb-0">DANH SÁCH KẾ HOẠCH TIÊM</h3>
+                    <div class="row">
+                        <div class="col-10">
+                            <h3 class="mb-0">DANH SÁCH KẾ HOẠCH TIÊM</h3>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-primary" (click)="createPlan()">THÊM KẾ HOẠCH
+                                MỚI</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
@@ -29,19 +37,20 @@
                             <tr>
                                 <td>1</td>
                                 <td>Kế hoạch tiêm chủng xã Vĩnh Thạnh</td>
-                                <td>abcxyz</td>
+                                <td>Chi tiết kế hoạch tiêm chủng vaccine phòng chống dịch ở xã Vĩnh Thạnh ngày
+                                    15/06/2022</td>
                                 <td>15/06/2021</td>
                                 <td>TYT xã Vĩnh Thạnh</td>
                                 <td class="text-right">
-                                    <div ngbDropdown>
+                                    <div ngbDropdown container="body">
                                         <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item" href="javascript:void(2)">Xem danh sách vaccine cần
                                                 dùng</a>
-                                            <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                            <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
+                                            <a class="dropdown-item" (click)="updatePlan()">Sửa thông tin</a>
+                                            <a class="dropdown-item" (click)="deletePlan()">Xóa</a>
                                         </div>
                                     </div>
                                 </td>

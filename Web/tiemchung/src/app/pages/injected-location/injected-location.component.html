@@ -11,7 +11,15 @@
         <div class="col">
             <div class="card shadow">
                 <div class="card-header border-0">
-                    <h3 class="mb-0">DANH SÁCH ĐỊA ĐIỂM TIÊM</h3>
+                    <div class="row">
+                        <div class="col-10">
+                            <h3 class="mb-0">DANH SÁCH ĐỊA ĐIỂM TIÊM</h3>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-primary" (click)="createLocation()">THÊM ĐỊA ĐIỂM TIÊM
+                                MỚI</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-flush">
@@ -27,24 +35,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let item of arrayData | slice:(page-1) * pageSize : page * pageSize">
                                 <th>
-                                    1
+                                    {{arrayData.indexOf(item) + 1}}
                                 </th>
                                 <td>
-                                    TYT xã Vĩnh Thạnh
+                                    {{item[1].name}}
                                 </td>
                                 <td>
-                                    Phú Vinh
+                                    {{item[1].address}}
                                 </td>
                                 <td>
-                                    xã Vĩnh Thạnh
+                                    {{item[1].commune}}
                                 </td>
                                 <td>
-                                    TP.Nha Trang
+                                    {{item[1].city}}
                                 </td>
                                 <td>
-                                    Khánh Hòa
+                                    {{item[1].province}}
                                 </td>
                                 <td class="text-right">
                                     <div ngbDropdown>
@@ -52,163 +60,8 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                            <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    1
-                                </th>
-                                <td>
-                                    TYT xã Vĩnh Thạnh
-                                </td>
-                                <td>
-                                    Phú Vinh
-                                </td>
-                                <td>
-                                    xã Vĩnh Thạnh
-                                </td>
-                                <td>
-                                    TP.Nha Trang
-                                </td>
-                                <td>
-                                    Khánh Hòa
-                                </td>
-                                <td class="text-right">
-                                    <div ngbDropdown>
-                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                            <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    1
-                                </th>
-                                <td>
-                                    TYT xã Vĩnh Thạnh
-                                </td>
-                                <td>
-                                    Phú Vinh
-                                </td>
-                                <td>
-                                    xã Vĩnh Thạnh
-                                </td>
-                                <td>
-                                    TP.Nha Trang
-                                </td>
-                                <td>
-                                    Khánh Hòa
-                                </td>
-                                <td class="text-right">
-                                    <div ngbDropdown>
-                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                            <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    1
-                                </th>
-                                <td>
-                                    TYT xã Vĩnh Thạnh
-                                </td>
-                                <td>
-                                    Phú Vinh
-                                </td>
-                                <td>
-                                    xã Vĩnh Thạnh
-                                </td>
-                                <td>
-                                    TP.Nha Trang
-                                </td>
-                                <td>
-                                    Khánh Hòa
-                                </td>
-                                <td class="text-right">
-                                    <div ngbDropdown>
-                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                            <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    1
-                                </th>
-                                <td>
-                                    TYT xã Vĩnh Thạnh
-                                </td>
-                                <td>
-                                    Phú Vinh
-                                </td>
-                                <td>
-                                    xã Vĩnh Thạnh
-                                </td>
-                                <td>
-                                    TP.Nha Trang
-                                </td>
-                                <td>
-                                    Khánh Hòa
-                                </td>
-                                <td class="text-right">
-                                    <div ngbDropdown>
-                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                            <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    1
-                                </th>
-                                <td>
-                                    TYT xã Vĩnh Thạnh
-                                </td>
-                                <td>
-                                    Phú Vinh
-                                </td>
-                                <td>
-                                    xã Vĩnh Thạnh
-                                </td>
-                                <td>
-                                    TP.Nha Trang
-                                </td>
-                                <td>
-                                    Khánh Hòa
-                                </td>
-                                <td class="text-right">
-                                    <div ngbDropdown>
-                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                            <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
+                                            <a class="dropdown-item" (click)="updateLocation()">Sửa thông tin</a>
+                                            <a class="dropdown-item" (click)="deleteLocation('1')">Xóa</a>
                                         </div>
                                     </div>
                                 </td>
@@ -218,28 +71,9 @@
                 </div>
                 <div class="card-footer py-4">
                     <nav aria-label="...">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                                    <i class="fas fa-angle-left"></i>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="javascript:void(0)">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="javascript:void(0)">2 <span
-                                        class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="javascript:void(0)">
-                                    <i class="fas fa-angle-right"></i>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
+                        <ngb-pagination class="d-flex justify-content-center" size="lg" [(page)]="page"
+                            [pageSize]="pageSize" [collectionSize]="arrayData.length" [boundaryLinks]="true">
+                        </ngb-pagination>
                     </nav>
                 </div>
             </div>

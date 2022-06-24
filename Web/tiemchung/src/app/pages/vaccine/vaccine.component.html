@@ -1,5 +1,7 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
+        <div class="header-body">
+        </div>
     </div>
 </div>
 <!-- Page content -->
@@ -9,295 +11,51 @@
         <div class="col">
             <div class="card shadow">
                 <div class="card-header border-0">
-                    <h2 class="mb-0">DANH SÁCH VACCINE</h2>
-                </div>
-                <div style="width: 100%;">
-                    <button type="button" class="collapse-button" data-toggle="collapse" data-target="#AstraZeneca">
-                        <p class="collapse-button-text">
-                            COVID-19 VACCINE AstraZeneca</p>
-                        <i class="fas fa-caret-right collapse-button-icon"></i>
-                    </button>
-                    <div id="AstraZeneca" class="collapse table-responsive">
-                        <table class="table table-hover">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">NO.</th>
-                                    <th scope="col">Số lô</th>
-                                    <th scope="col">Số lượng</th>
-                                    <th scope="col">Ngày nhập kho</th>
-                                    <th scope="col">Ngày hết hạn</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>AST001</td>
-                                    <td>1500</td>
-                                    <td>15/06/2021</td>
-                                    <td>15/06/2024</td>
-                                    <td class="text-right">
-                                        <div ngbDropdown>
-                                            <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                                <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>AST001</td>
-                                    <td>1500</td>
-                                    <td>15/06/2021</td>
-                                    <td>15/06/2024</td>
-                                    <td class="text-right">
-                                        <div ngbDropdown>
-                                            <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                                <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>AST001</td>
-                                    <td>1500</td>
-                                    <td>15/06/2021</td>
-                                    <td>15/06/2024</td>
-                                    <td class="text-right">
-                                        <div ngbDropdown>
-                                            <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                                <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>AST001</td>
-                                    <td>1500</td>
-                                    <td>15/06/2021</td>
-                                    <td>15/06/2024</td>
-                                    <td class="text-right">
-                                        <div ngbDropdown>
-                                            <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                                <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="row">
+                        <div class="col-10">
+                            <h3 class="mb-0">DANH SÁCH VACCINE</h3>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-primary" (click)="createVaccine()">THÊM VACCINE
+                                MỚI</button>
+                        </div>
                     </div>
                 </div>
-                <div style="width: 100%;">
-                    <button type="button" class="collapse-button" data-toggle="collapse" data-target="#Moderna">
-                        <p class="collapse-button-text">
-                            COVID-19 VACCINE Morderna</p>
-                        <i class="fas fa-caret-right collapse-button-icon"></i>
-                    </button>
-                    <div id="Moderna" class="collapse table-responsive">
-                        <table class="table table-hover">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">NO.</th>
-                                    <th scope="col">Số lô</th>
-                                    <th scope="col">Số lượng</th>
-                                    <th scope="col">Ngày nhập kho</th>
-                                    <th scope="col">Ngày hết hạn</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>AST001</td>
-                                    <td>1500</td>
-                                    <td>15/06/2021</td>
-                                    <td>15/06/2024</td>
-                                    <td class="text-right">
-                                        <div ngbDropdown>
-                                            <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                                <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                            </div>
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">NO.</th>
+                                <th scope="col">TÊN VACCINE</th>
+                                <th scope="col">XUẤT XỨ</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of arrayData">
+                                <td>{{arrayData.indexOf(item) + 1}}</td>
+                                <td>{{item[1].name}}</td>
+                                <td>{{item[1].origin}}</td>
+                                <td class="text-right">
+                                    <div ngbDropdown>
+                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" [routerLink]="['/vaccine', item[0]]">Xem danh sách
+                                                lô
+                                                vaccine</a>
+                                            <a class="dropdown-item" (click)="updateVaccine(item[0])">Sửa thông tin</a>
+                                            <a class="dropdown-item" (click)="deleteVaccine(item[0])">Xóa</a>
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>AST002</td>
-                                    <td>1500</td>
-                                    <td>15/06/2021</td>
-                                    <td>15/06/2024</td>
-                                    <td class="text-right">
-                                        <div ngbDropdown>
-                                            <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                                <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>AST003</td>
-                                    <td>20000</td>
-                                    <td>15/07/2021</td>
-                                    <td>15/07/2024</td>
-                                    <td class="text-right">
-                                        <div ngbDropdown>
-                                            <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                                <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>AST004</td>
-                                    <td>15000</td>
-                                    <td>25/12/2021</td>
-                                    <td>25/12/2024</td>
-                                    <td class="text-right">
-                                        <div ngbDropdown>
-                                            <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                                <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div style="width: 100%;">
-                    <button type="button" class="collapse-button" data-toggle="collapse" data-target="#VeroCell">
-                        <p class="collapse-button-text">
-                            COVID-19 VACCINE Vero Cell</p>
-                        <i class="fas fa-caret-right collapse-button-icon"></i>
-                    </button>
-                    <div id="VeroCell" class="collapse table-responsive">
-                        <table class="table table-hover ">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">NO.</th>
-                                    <th scope="col">Số lô</th>
-                                    <th scope="col">Số lượng</th>
-                                    <th scope="col">Ngày nhập kho</th>
-                                    <th scope="col">Ngày hết hạn</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>AST001</td>
-                                    <td>1500</td>
-                                    <td>15/06/2021</td>
-                                    <td>15/06/2024</td>
-                                    <td class="text-right">
-                                        <div ngbDropdown>
-                                            <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                                <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>AST001</td>
-                                    <td>1500</td>
-                                    <td>15/06/2021</td>
-                                    <td>15/06/2024</td>
-                                    <td class="text-right">
-                                        <div ngbDropdown>
-                                            <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                                <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>AST001</td>
-                                    <td>1500</td>
-                                    <td>15/06/2021</td>
-                                    <td>15/06/2024</td>
-                                    <td class="text-right">
-                                        <div ngbDropdown>
-                                            <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                                <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>AST001</td>
-                                    <td>1500</td>
-                                    <td>15/06/2021</td>
-                                    <td>15/06/2024</td>
-                                    <td class="text-right">
-                                        <div ngbDropdown>
-                                            <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                                <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="card-footer py-4">
-                    <!-- <nav aria-label="...">
+                    <nav aria-label="...">
                         <ul class="pagination justify-content-end mb-0">
                             <li class="page-item disabled">
                                 <a class="page-link" href="javascript:void(0)" tabindex="-1">
@@ -320,7 +78,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </nav> -->
+                    </nav>
                 </div>
             </div>
         </div>

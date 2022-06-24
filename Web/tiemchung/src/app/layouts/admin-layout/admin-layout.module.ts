@@ -17,6 +17,22 @@ import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.co
 import { NgbModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { UserDeleteComponent } from 'src/app/components/modal/user/user-delete/user-delete.component';
+import { LocationCreateComponent } from 'src/app/components/modal/location/location-create/location-create.component';
+import { LocationDeleteComponent } from 'src/app/components/modal/location/location-delete/location-delete.component';
+import { LocationUpdateComponent } from 'src/app/components/modal/location/location-update/location-update.component';
+import { RegistrationUpdateComponent } from 'src/app/components/modal/registration/registration-update/registration-update.component';
+import { VaccineCreateComponent } from 'src/app/components/modal/vaccine/vaccine-create/vaccine-create.component';
+import { VaccineDeleteComponent } from 'src/app/components/modal/vaccine/vaccine-delete/vaccine-delete.component';
+import { VaccineUpdateComponent } from 'src/app/components/modal/vaccine/vaccine-update/vaccine-update.component';
+import { PlanUpdateComponent } from 'src/app/components/modal/plan/plan-update/plan-update.component';
+import { PlanCreateComponent } from 'src/app/components/modal/plan/plan-create/plan-create.component';
+import { PlanDeleteComponent } from 'src/app/components/modal/plan/plan-delete/plan-delete.component';
+import { HistoryCreateComponent } from 'src/app/components/modal/history/history-create/history-create.component';
+import { HistoryUpdateComponent } from 'src/app/components/modal/history/history-update/history-update.component';
+import { BatchCreateComponent } from 'src/app/components/modal/batch/batch-create/batch-create.component';
+import { BatchDeleteComponent } from 'src/app/components/modal/batch/batch-delete/batch-delete.component';
+import { BatchUpdateComponent } from 'src/app/components/modal/batch/batch-update/batch-update.component';
 import { UserUpdateComponent } from 'src/app/components/modal/user/user-update/user-update.component';
 
 
@@ -31,7 +47,7 @@ import { UserUpdateComponent } from 'src/app/components/modal/user/user-update/u
     NgbDatepickerModule,
     ClipboardModule,
     ToastrModule,
-    // ComponentsModule
+    ComponentsModule
   ],
   declarations: [
     DashboardComponent,
@@ -42,13 +58,26 @@ import { UserUpdateComponent } from 'src/app/components/modal/user/user-update/u
     InjectedRegistrationComponent,
     VaccineComponent,
     UserProfileComponent,
-    UserUpdateComponent
+    BatchDeleteComponent,
+    BatchCreateComponent,
+    BatchUpdateComponent,
+    UserUpdateComponent,
+    UserDeleteComponent,
+    LocationCreateComponent,
+    LocationDeleteComponent,
+    LocationUpdateComponent,
+    RegistrationUpdateComponent,
+    VaccineCreateComponent,
+    VaccineDeleteComponent,
+    VaccineUpdateComponent,
+    PlanUpdateComponent,
+    PlanCreateComponent,
+    PlanDeleteComponent,
+    HistoryCreateComponent,
+    HistoryUpdateComponent
   ],
   providers: [
     DatePipe
-  ],
-  entryComponents: [
-    UserUpdateComponent
   ]
 })
 

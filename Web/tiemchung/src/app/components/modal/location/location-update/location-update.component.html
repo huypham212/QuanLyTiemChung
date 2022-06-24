@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">CẬP NHẬT THÔNG TIN ĐIỂM TIÊM</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal('Cross click')">&times;</button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="updateLocationForm">
+        <div class="pl-lg-4">
+            <div class="form-group">
+                <label class="form-control-label" for="input-username">Tên điểm tiêm</label>
+                <input type="text" id="input-name" formControlName="name" class="form-control form-control-alternative">
+            </div>
+        </div>
+        <div class="pl-lg-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-detail">Địa chỉ</label>
+                        <input id="input-address" class="form-control form-control-alternative"
+                            formControlName="address" placeholder="Địa chỉ chi tiết" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-city">Xã/Phường</label>
+                        <input type="text" id="input-city" class="form-control form-control-alternative"
+                            formControlName="commune" placeholder="Xã/Phường">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-city">Quận/Huyện</label>
+                        <input type="text" id="input-city" class="form-control form-control-alternative"
+                            formControlName="city" placeholder="Quận/Huyện">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-province">Tỉnh/Thành phố</label>
+                        <input type="text" id="input-province" class="form-control form-control-alternative"
+                            formControlName="province" placeholder="Tỉnh/Thành phố">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSave()">Save</button>
+</div>
