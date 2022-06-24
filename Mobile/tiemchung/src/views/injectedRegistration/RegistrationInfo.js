@@ -27,7 +27,7 @@ const RegistrationInfo = (props) => {
         const info = [{
             "createAt": new Date(),
             "registrationDate": dateFormat(JSON.stringify(date).substring(1, 11), 'dd/MM/yyyy'),
-            "registrationTime": "Buổi sáng",
+            "registrationLocation": injectedLocation,
             "status": "No Injected",
             "vaccineName": "COVID-19 VACCINE AstraZeneca"
         }]
@@ -36,6 +36,11 @@ const RegistrationInfo = (props) => {
 
     return (
         <ScrollView style={styles.viewContainers}>
+            <View style={{ flexDirection: 'row' }}>
+                <View style={{ backgroundColor: '#888888', height: 2, flex: 1, alignSelf: 'center' }} />
+                <Text style={styles.headerStyle}>Thông tin cá nhân</Text>
+                <View style={{ backgroundColor: '#888888', height: 2, flex: 1, alignSelf: 'center' }} />
+            </View>
             <InputField
                 inputStyle={styles.inputStyle}
                 label="Họ và tên"
@@ -114,6 +119,11 @@ const RegistrationInfo = (props) => {
                 labelStyle={styles.labelDisabledStyles}
                 disabled
             />
+            <View style={{ flexDirection: 'row', marginBottom: 15 }}>
+                <View style={{ backgroundColor: '#888888', height: 2, flex: 1, alignSelf: 'center' }} />
+                <Text style={styles.headerStyle}>Thông tin đăng ký tiêm</Text>
+                <View style={{ backgroundColor: '#888888', height: 2, flex: 1, alignSelf: 'center' }} />
+            </View>
             <DateTimePicker
                 containerStyle={styles.inputStyle}
                 underlineColor={'#778899'}
