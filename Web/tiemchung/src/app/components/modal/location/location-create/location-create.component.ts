@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { InjectedLocationService } from 'src/app/services/injected-location/injected-location.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-location-create',
@@ -18,7 +19,7 @@ export class LocationCreateComponent implements OnInit {
     province: new FormControl(''),
   })
 
-  constructor(private injectedLocationService: InjectedLocationService, private activeModal: NgbActiveModal) { }
+  constructor(private injectedLocationService: InjectedLocationService, private activeModal: NgbActiveModal, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +29,7 @@ export class LocationCreateComponent implements OnInit {
       console.log(data);
       this.createLocationForm.reset();
       this.activeModal.close();
+      this.toastr.success('Tạo điểm tiêm mới thành công!');
     }).catch(err => {
       console.log(err);
     });

@@ -47,8 +47,26 @@ export class InjectedLocationComponent implements OnInit {
     });
   }
 
-  updateLocation = () => {
+  updateLocation = (id) => {
     const modalRef = this.modalService.open(LocationUpdateComponent, { ariaLabelledBy: 'modal-basic-title', size: 'lg', centered: true, scrollable: true, backdrop: true });
+
+    let data = {
+      id: id
+    }
+
+    modalRef.componentInstance.fromParent = data;
+
+    modalRef.result.then((result) => {
+      console.log(result);
+    }, (reason) => {
+      console.log(reason);
+    }).then(() => {
+      this.fetchData();
+    });
+
+    modalRef.closed.subscribe((res) => {
+      console.log(res);
+    });
   }
 
   deleteLocation = (id: string) => {
