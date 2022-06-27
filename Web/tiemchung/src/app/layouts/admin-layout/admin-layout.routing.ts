@@ -10,6 +10,7 @@ import { InjectedRegistrationComponent } from './../../pages/injected-registrati
 import { UserProfileComponent } from './../../pages/user-profile/user-profile.component';
 import { VaccineBatchComponent } from 'src/app/pages/vaccine-batch/vaccine-batch.component';
 import { PlanCreateComponent } from 'src/app/pages/plan-create/plan-create.component';
+import { PlanDetailComponent } from 'src/app/pages/plan-detail/plan-detail.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
@@ -19,11 +20,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'location', component: InjectedLocationComponent },
     { path: 'histories/:id', component: InjectedHistoriesComponent },
     { path: 'registration/:id', component: InjectedRegistrationComponent },
-    {
-        path: 'plan', component: InjectedPlanComponent, children: [
-            { path: 'create', component: PlanCreateComponent },
-            { path: 'update/:id', component: PlanCreateComponent }
-        ]
-    },
+    { path: 'plan', component: InjectedPlanComponent },
+    { path: 'plan/create', component: PlanCreateComponent },
+    { path: 'plan/update/:id', component: PlanCreateComponent },
+    { path: 'plan/detail/:id', component: PlanDetailComponent },
     { path: 'profile', component: UserProfileComponent }
 ];

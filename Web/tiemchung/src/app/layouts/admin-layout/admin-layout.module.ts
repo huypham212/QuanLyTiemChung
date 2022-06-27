@@ -43,7 +43,6 @@ import { UserUpdateComponent } from 'src/app/components/modal/user/user-update/u
     HttpClientModule,
     NgbModule,
     NgbDatepickerModule,
-    ClipboardModule,
     ToastrModule,
     ComponentsModule
   ],

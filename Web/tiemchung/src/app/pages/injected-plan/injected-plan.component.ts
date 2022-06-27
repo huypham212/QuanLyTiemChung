@@ -25,7 +25,7 @@ export class InjectedPlanComponent implements OnInit {
   }
 
   createPlan = () => {
-    this.router.navigate(['/admin/plan/create']);
+    this.router.navigate(['/plan/create']);
   }
 
   updatePlan = () => {

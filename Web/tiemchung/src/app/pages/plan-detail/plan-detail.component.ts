@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { InjectedPlanService } from 'src/app/services/injected-plan/injected-plan.service';
 
 @Component({
-  selector: 'app-plan-update',
-  templateUrl: './plan-update.component.html',
-  styleUrls: ['./plan-update.component.scss']
+  selector: 'app-plan-detail',
+  templateUrl: './plan-detail.component.html',
+  styleUrls: ['./plan-detail.component.scss']
 })
-export class PlanUpdateComponent implements OnInit {
+export class PlanDetailComponent implements OnInit {
 
-  updatePlanForm = new FormGroup({
+  detailPlan = new FormGroup({
     title: new FormControl(''),
     content: new FormControl(''),
     implementationDate: new FormControl(''),
@@ -18,7 +17,7 @@ export class PlanUpdateComponent implements OnInit {
   });
 
   editorConfig: AngularEditorConfig = {
-    editable: true,
+    editable: false,
     spellcheck: true,
     height: '220px',
     minHeight: '0',
@@ -60,16 +59,9 @@ export class PlanUpdateComponent implements OnInit {
     ]
   }
 
-  constructor(private injectedPlanService: InjectedPlanService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSave = () => {
-    this.injectedPlanService.updateInjectedPlan("id", this.updatePlanForm.value).then(data => {
-      console.log(data);
-    }).catch(err => {
-      console.log(err);
-    });
-  }
 }

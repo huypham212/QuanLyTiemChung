@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { InjectedPlanService } from './../../services/injected-plan/injected-plan.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 
@@ -18,19 +18,19 @@ export class PlanCreateComponent implements OnInit {
 
   editorConfig: AngularEditorConfig = {
     editable: true,
-    spellcheck: true,
-    height: 'auto',
+    spellcheck: false,
+    height: '550px',
     minHeight: '0',
     maxHeight: 'auto',
     width: 'auto',
     minWidth: '0',
-    translate: 'yes',
-    enableToolbar: true,
-    showToolbar: true,
+    translate: 'no',
+    enableToolbar: false,
+    showToolbar: false,
     placeholder: 'Enter text here...',
     defaultParagraphSeparator: '',
-    defaultFontName: '',
-    defaultFontSize: '',
+    defaultFontName: 'Times New Roman',
+    defaultFontSize: '4',
     fonts: [
       { class: 'arial', name: 'Arial' },
       { class: 'times-new-roman', name: 'Times New Roman' },
@@ -43,20 +43,12 @@ export class PlanCreateComponent implements OnInit {
         class: 'quote',
       },
       {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
         name: 'titleText',
         class: 'titleText',
         tag: 'h1',
       },
     ],
     toolbarPosition: 'top',
-    toolbarHiddenButtons: [
-      ['bold', 'italic'],
-      ['fontSize']
-    ]
   }
 
   constructor(private injectedPlanService: InjectedPlanService) { }

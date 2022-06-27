@@ -28,6 +28,7 @@ import { DatePipe } from '@angular/common';
 import { VaccineBatchComponent } from './pages/vaccine-batch/vaccine-batch.component';
 import { PlanCreateComponent } from './pages/plan-create/plan-create.component';
 import { PlanUpdateComponent } from './pages/plan-update/plan-update.component';
+import { PlanDetailComponent } from './pages/plan-detail/plan-detail.component';
 
 @NgModule({
   imports: [
@@ -61,6 +62,7 @@ import { PlanUpdateComponent } from './pages/plan-update/plan-update.component';
     VaccineBatchComponent,
     PlanCreateComponent,
     PlanUpdateComponent,
+    PlanDetailComponent,
   ],
   providers: [
     AuthService,

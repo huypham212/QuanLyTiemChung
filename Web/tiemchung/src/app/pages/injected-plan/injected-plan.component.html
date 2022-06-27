@@ -27,7 +27,6 @@
                             <tr>
                                 <th scope="col">NO.</th>
                                 <th scope="col">TIÊU ĐỀ</th>
-                                <th scope="col">NỘI DUNG</th>
                                 <th scope="col">NGÀY THỰC HIỆN</th>
                                 <th scope="col">ĐỊA ĐIỂM THỰC HIỆN</th>
                                 <th scope="col"></th>
@@ -37,8 +36,6 @@
                             <tr>
                                 <td>1</td>
                                 <td>Kế hoạch tiêm chủng xã Vĩnh Thạnh</td>
-                                <td>Chi tiết kế hoạch tiêm chủng vaccine phòng chống dịch ở xã Vĩnh Thạnh ngày
-                                    15/06/2022</td>
                                 <td>15/06/2021</td>
                                 <td>TYT xã Vĩnh Thạnh</td>
                                 <td class="text-right">
@@ -47,6 +44,8 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" routerLink="/plan/detail/1">Xem chi tiết kế hoạch
+                                                tiêm</a>
                                             <a class="dropdown-item" href="javascript:void(2)">Xem danh sách vaccine cần
                                                 dùng</a>
                                             <a class="dropdown-item" (click)="updatePlan()">Sửa thông tin</a>

@@ -48,11 +48,9 @@
                             </div>
                         </div>
                         <div class="pl-lg-4">
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-detail">Nội dung kế hoạch</label>
-                                <angular-editor formControlName="content" class="form-control form-control-alternative"
-                                    [config]="editorConfig"></angular-editor>
-                            </div>
+                            <label class="form-control-label" for="input-detail">Nội dung kế hoạch</label>
+                            <angular-editor formControlName="content" [config]="editorConfig">
+                            </angular-editor>
                         </div>
                     </form>
                 </div>
