@@ -5,7 +5,7 @@ This is graduation project.
 ## Pre-Required
 **Node.js:** `8.3 or latest`  
 **React Native:** `0.67 or latest`  
-**React:** `17.0.2 or latest`  
+**Angular:** `13.0.0 or latest`  
 ## Usage
 ### Run on Mobile
 On root project, run:  
