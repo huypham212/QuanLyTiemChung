@@ -13,10 +13,11 @@
                 <div class="card-header border-0">
                     <div class="row">
                         <div class="col-10">
-                            <h3 class="mb-0">DANH SÁCH LÔ VACCINE CỦA</h3>
+                            <h3 class="mb-0">DANH SÁCH LÔ VACCINE CỦA {{vaccineName}}</h3>
                         </div>
                         <div class="col-2">
-                            <button type="button" class="btn btn-primary">THÊM LÔ VACCINE MỚI</button>
+                            <button type="button" class="btn btn-primary" (click)="onCreate()">THÊM LÔ VACCINE
+                                MỚI</button>
                         </div>
                     </div>
                 </div>
@@ -32,75 +33,21 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngFor="let item of batchData">
                             <tr>
-                                <td>1</td>
-                                <td>AST001</td>
-                                <td>1500</td>
-                                <td>15/06/2021</td>
-                                <td>15/06/2024</td>
+                                <td>{{batchData.indexOf(item) + 1}}</td>
+                                <td>{{item[0]}}</td>
+                                <td>{{item[1].amounts}}</td>
+                                <td>{{item[1].dateIn}}</td>
+                                <td>{{item[1].dateExp}}</td>
                                 <td class="text-right">
-                                    <div ngbDropdown>
+                                    <div ngbDropdown container="body">
                                         <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                            <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>AST001</td>
-                                <td>1500</td>
-                                <td>15/06/2021</td>
-                                <td>15/06/2024</td>
-                                <td class="text-right">
-                                    <div ngbDropdown>
-                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                            <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>AST001</td>
-                                <td>1500</td>
-                                <td>15/06/2021</td>
-                                <td>15/06/2024</td>
-                                <td class="text-right">
-                                    <div ngbDropdown>
-                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                            <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>AST001</td>
-                                <td>1500</td>
-                                <td>15/06/2021</td>
-                                <td>15/06/2024</td>
-                                <td class="text-right">
-                                    <div ngbDropdown>
-                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="javascript:void(2)">Sửa thông tin</a>
-                                            <a class="dropdown-item" href="javascript:void(3)">Xóa</a>
+                                            <a class="dropdown-item" (click)="onUpdate(item[0])">Sửa thông tin</a>
+                                            <a class="dropdown-item" (click)="onDelete(item[0])">Xóa</a>
                                         </div>
                                     </div>
                                 </td>

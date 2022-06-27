@@ -13,20 +13,13 @@ import { Router } from '@angular/router';
 export class VaccineService {
     constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth, private router: Router, private ngZone: NgZone, private db: AngularFireDatabase) { }
 
+    //Service for Vaccine
     getAllVaccine = () => {
         return this.db.database.ref('/vaccines').once('value');
     }
 
     getVaccineByID = (id) => {
         return this.db.database.ref('/vaccines/' + id).once('value');
-    }
-
-    createVaccineBatch = (vaccine: any) => {
-        return this.db.database.ref('/vaccines/' + vaccine.vaccineName + "/batchs" + vaccine.batchNumber).set(vaccine);
-    }
-
-    deleteVaccineBatch = (vaccine: any) => {
-        return this.db.database.ref('/vaccines/' + vaccine.vaccineName + "/batchs" + vaccine.batchNumber).remove();
     }
 
     createVaccine = (vaccine: any) => {
@@ -37,12 +30,24 @@ export class VaccineService {
         return this.db.database.ref('/vaccines/' + id).update(vaccine);
     }
 
-    updateBatch = (vaccineName: string, batchNumber: string, vaccine: any) => {
-        return this.db.database.ref('/vaccines/' + vaccineName + "/batchs" + batchNumber).update(vaccine);
-    }
-
     deleteVaccine = (vaccineName: string) => {
         return this.db.database.ref('/vaccines/' + vaccineName).remove();
     }
 
+    //Servce for batch
+    getVaccineBatchByID = (vaccineId: string, batchId: string) => {
+        return this.db.database.ref('/vaccines/' + vaccineId + '/batchs/' + batchId).once('value');
+    }
+
+    createVaccineBatch = (vaccineId: string, batchNumber: string, batch: any) => {
+        return this.db.database.ref('/vaccines/' + vaccineId + "/batchs/" + batchNumber).set(batch);
+    }
+
+    updateVaccineBatch = (vaccineId: string, batchNumber: string, vaccine: any) => {
+        return this.db.database.ref('/vaccines/' + vaccineId + "/batchs/" + batchNumber).update(vaccine);
+    }
+
+    deleteVaccineBatch = (vaccineId: string, batchNumber: string,) => {
+        return this.db.database.ref('/vaccines/' + vaccineId + "/batchs/" + batchNumber).remove();
+    }
 }
