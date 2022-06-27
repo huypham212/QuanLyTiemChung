@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/users/user.service';
 import { User } from 'src/app/models/user.model';
 import { DatePipe } from '@angular/common';
 import { dateFormat } from 'src/app/utils/dateFormat';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-update',
@@ -29,16 +30,20 @@ export class UserUpdateComponent implements OnInit {
     province: new FormControl('')
   })
 
-  constructor(public activeModal: NgbActiveModal, private userService: UserService, private datePipe: DatePipe) { }
+  constructor(public activeModal: NgbActiveModal, private userService: UserService, private datePipe: DatePipe, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.userService.getUserByUID(this.fromParent.id).then(data => {
       this.userData = data.val();
-      console.log(this.userData.name);
+
+      var dateParts = this.userData.dob.split("/");
+      // month is 0-based, that's why we need dataParts[1] - 1
+      var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+      // console.log(dateObject);
       this.updateUserForm.patchValue({
         name: this.userData.name,
         email: this.userData.email,
-        dob: this.datePipe.transform(this.userData.dob, 'yyyy-MM-dd'),
+        dob: this.datePipe.transform(dateObject, 'yyyy-MM-dd'),
         phone: this.userData.phone,
         gender: this.userData.gender,
         idCard: this.userData.idCard,
@@ -47,7 +52,7 @@ export class UserUpdateComponent implements OnInit {
         city: this.userData.address.city,
         province: this.userData.address.province
       })
-      console.log(this.updateUserForm.value);
+      console.log(this.updateUserForm.value.dob);
     }).catch(err => {
       console.log(err);
     })
@@ -72,6 +77,7 @@ export class UserUpdateComponent implements OnInit {
 
     this.userService.updateUser(this.fromParent.id, this.user).then((data) => {
       this.activeModal.close();
+      this.toastr.success('Update user successfully!', 'Success');
       console.log(data);
     }
     ).catch(err => {

@@ -48,7 +48,6 @@ export class UserComponent implements OnInit {
     }, (reason) => { })
 
     updateModalRef.closed.subscribe((result) => {
-      this.toastr.success('Update user successfully!', 'Success');
       this.fetchData();
     });
   }
@@ -66,7 +65,7 @@ export class UserComponent implements OnInit {
     }, (reason) => { })
 
     deleteModalRef.closed.subscribe((result) => {
-      this.toastr.success('User has been deleted');
+
       this.fetchData();
     });
   }
