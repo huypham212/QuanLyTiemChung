@@ -50,7 +50,8 @@ export class AuthService {
                     console.log(result.user.uid, this.loginUid);
                     for (let acc of Object.entries(res.val())) {
                         if (result.user.uid === acc[1]) {
-                            this.router.navigate(['/']);
+                            this.router.navigate(['/dashboard']);
+                            this.toastr.success("Đăng nhập thành công!", 'Thành công');
                             this.SetUserData(result.user);
                         }
                         else {

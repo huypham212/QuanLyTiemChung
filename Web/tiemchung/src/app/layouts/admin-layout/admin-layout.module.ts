@@ -25,8 +25,6 @@ import { RegistrationUpdateComponent } from 'src/app/components/modal/registrati
 import { VaccineCreateComponent } from 'src/app/components/modal/vaccine/vaccine-create/vaccine-create.component';
 import { VaccineDeleteComponent } from 'src/app/components/modal/vaccine/vaccine-delete/vaccine-delete.component';
 import { VaccineUpdateComponent } from 'src/app/components/modal/vaccine/vaccine-update/vaccine-update.component';
-import { PlanUpdateComponent } from 'src/app/components/modal/plan/plan-update/plan-update.component';
-import { PlanCreateComponent } from 'src/app/components/modal/plan/plan-create/plan-create.component';
 import { PlanDeleteComponent } from 'src/app/components/modal/plan/plan-delete/plan-delete.component';
 import { HistoryCreateComponent } from 'src/app/components/modal/history/history-create/history-create.component';
 import { HistoryUpdateComponent } from 'src/app/components/modal/history/history-update/history-update.component';
@@ -70,8 +68,6 @@ import { UserUpdateComponent } from 'src/app/components/modal/user/user-update/u
     VaccineCreateComponent,
     VaccineDeleteComponent,
     VaccineUpdateComponent,
-    PlanUpdateComponent,
-    PlanCreateComponent,
     PlanDeleteComponent,
     HistoryCreateComponent,
     HistoryUpdateComponent

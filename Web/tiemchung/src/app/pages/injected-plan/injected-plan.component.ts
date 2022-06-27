@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PlanCreateComponent } from 'src/app/components/modal/plan/plan-create/plan-create.component';
 import { PlanDeleteComponent } from 'src/app/components/modal/plan/plan-delete/plan-delete.component';
-import { PlanUpdateComponent } from 'src/app/components/modal/plan/plan-update/plan-update.component';
 import { InjectedPlanService } from 'src/app/services/injected-plan/injected-plan.service';
 
 @Component({
@@ -13,7 +11,7 @@ import { InjectedPlanService } from 'src/app/services/injected-plan/injected-pla
 })
 export class InjectedPlanComponent implements OnInit {
 
-  constructor(private injectedPlanService: InjectedPlanService, private modalService: NgbModal, private activeRoute: ActivatedRoute,) { }
+  constructor(private injectedPlanService: InjectedPlanService, private modalService: NgbModal, private router: Router, private activeRoute: ActivatedRoute,) { }
 
   ngOnInit(): void {
   }
@@ -27,11 +25,11 @@ export class InjectedPlanComponent implements OnInit {
   }
 
   createPlan = () => {
-    const modalRef = this.modalService.open(PlanCreateComponent, { ariaLabelledBy: 'modal-basic-title', size: 'lg', centered: true, scrollable: true, backdrop: false });
+    this.router.navigate(['/admin/plan/create']);
   }
 
   updatePlan = () => {
-    const modalRef = this.modalService.open(PlanUpdateComponent, { ariaLabelledBy: 'modal-basic-title', size: 'lg', centered: true, scrollable: true, backdrop: false });
+    //const modalRef = this.modalService.open(PlanUpdateComponent, { ariaLabelledBy: 'modal-basic-title', size: 'lg', centered: true, scrollable: true, backdrop: false });
   }
 
   deletePlan = () => {

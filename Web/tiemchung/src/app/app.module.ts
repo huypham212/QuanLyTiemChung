@@ -9,6 +9,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 import { NgbModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -25,6 +26,8 @@ import { AuthService } from './services/auth/auth.service';
 import { ToastrModule } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { VaccineBatchComponent } from './pages/vaccine-batch/vaccine-batch.component';
+import { PlanCreateComponent } from './pages/plan-create/plan-create.component';
+import { PlanUpdateComponent } from './pages/plan-update/plan-update.component';
 
 @NgModule({
   imports: [
@@ -35,6 +38,7 @@ import { VaccineBatchComponent } from './pages/vaccine-batch/vaccine-batch.compo
     NgbModule,
     NgbDatepickerModule,
     RouterModule,
+    AngularEditorModule,
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
@@ -49,12 +53,14 @@ import { VaccineBatchComponent } from './pages/vaccine-batch/vaccine-batch.compo
       maxOpened: 2,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
-    })
+    }),
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     VaccineBatchComponent,
+    PlanCreateComponent,
+    PlanUpdateComponent,
   ],
   providers: [
     AuthService,
