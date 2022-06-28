@@ -33,6 +33,7 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
+                        <p *ngIf="batchData.length == 0">Không có dữ liệu</p>
                         <tbody *ngFor="let item of batchData">
                             <tr>
                                 <td>{{batchData.indexOf(item) + 1}}</td>
