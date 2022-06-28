@@ -13,7 +13,7 @@
                 <div class="card-header border-0">
                     <div class="row">
                         <div class="col-10">
-                            <h3 class="mb-0">DANH SÁCH MŨI TIÊM CỦA PHẠM NGUYỄN THANH HUY</h3>
+                            <h3 class="mb-0">DANH SÁCH MŨI TIÊM CỦA {{userName}}</h3>
                         </div>
                         <div class="col-2">
                             <button type="button" class="btn btn-primary" (click)="createHistories()">THÊM MŨI TIÊM
@@ -33,22 +33,24 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <p *ngIf="injectedHistoriesData.length == 0">Không có dữ liệu</p>
+                        <tbody *ngFor="let item of injectedHistoriesData">
+
                             <tr>
                                 <th>
-                                    1
+                                    {{injectedHistoriesData.indexOf(item) + 1}}
                                 </th>
                                 <td>
-                                    TYT xã Vĩnh Thạnh
+                                    {{item[1].injectedLocation}}
                                 </td>
                                 <td>
-                                    VACCINE COVID-19 AstraZeneca
+                                    {{item[1].vaccineName}}
                                 </td>
                                 <td>
-                                    AST001
+                                    {{item[1].batchNumber}}
                                 </td>
                                 <td>
-                                    12/11/2021
+                                    {{item[1].injectedDate}}
                                 </td>
                                 <td class="text-right">
                                     <div ngbDropdown container="body">
@@ -56,7 +58,8 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" (click)="updateHistories()">Sửa thông tin</a>
+                                            <a class="dropdown-item" (click)="updateHistories(item[0])">Sửa thông
+                                                tin</a>
                                         </div>
                                     </div>
                                 </td>

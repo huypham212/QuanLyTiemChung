@@ -7,16 +7,21 @@
         <div class="pl-lg-4">
             <div class="form-group">
                 <label class="form-control-label" for="input-username">Tên điểm tiêm</label>
-                <input type="text" id="input-name" formControlName="injectedLocation"
-                    class="form-control form-control-alternative">
+                <select class="form-control form-control-alternative" formControlName="injectedLocation">
+                    <option selected>...</option>
+                    <option *ngFor="let item of injectedLocationData">{{item.name}}</option>
+                </select>
             </div>
         </div>
         <div class="pl-lg-4">
             <div class="form-group">
                 <label class="form-control-label" for="input-phone">Tên vaccine</label>
                 <div>
-                    <input type="text" id="input-email" formControlName="vaccineName"
-                        class="form-control form-control-alternative">
+                    <select class="form-control form-control-alternative" formControlName="vaccineName"
+                        (change)="onVaccineChange()">
+                        <option selected>...</option>
+                        <option *ngFor="let item of vaccineData">{{item[1].name}}</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -24,9 +29,11 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="form-control-label" for="input-username">Số lô vaccine</label>
-                        <input type="text" id="input-name" formControlName="batchNumber"
-                            class="form-control form-control-alternative">
+                        <label class="form-control-label" for="input-batch-number">Số lô vaccine</label>
+                        <select class="form-control form-control-alternative" formControlName="batchNumber">
+                            <option selected>...</option>
+                            <option *ngFor="let item of batchData">{{item[0]}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-lg-6">
