@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { InjectedPlanService } from 'src/app/services/injected-plan/injected-plan.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-plan-delete',
@@ -9,7 +10,7 @@ import { InjectedPlanService } from 'src/app/services/injected-plan/injected-pla
 })
 export class PlanDeleteComponent implements OnInit {
   @Input() fromParent;
-  constructor(private injectedPlanService: InjectedPlanService, private activeModal: NgbActiveModal) { }
+  constructor(private injectedPlanService: InjectedPlanService, private activeModal: NgbActiveModal, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -18,8 +19,9 @@ export class PlanDeleteComponent implements OnInit {
     this.injectedPlanService.deleteInjectedPlan(this.fromParent.id).then(data => {
       console.log(data);
       this.activeModal.close();
+      this.toastr.success('Xóa kế hoạch tiêm thành công!', 'Success');
     }).catch(err => {
-      console.log(err);
+      this.toastr.error('Xóa kế hoạch tiêm thất bại!', 'Error');
     });
   }
 

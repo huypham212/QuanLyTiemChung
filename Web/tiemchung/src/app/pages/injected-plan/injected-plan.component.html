@@ -33,23 +33,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let item of planData">
                                 <td>1</td>
-                                <td>Kế hoạch tiêm chủng xã Vĩnh Thạnh</td>
-                                <td>15/06/2021</td>
-                                <td>TYT xã Vĩnh Thạnh</td>
+                                <td>{{item[1].title}}</td>
+                                <td>{{item[1].implementationDate}}</td>
+                                <td>{{item[1].implementationLocation}}</td>
                                 <td class="text-right">
                                     <div ngbDropdown container="body">
                                         <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" routerLink="/plan/detail/1">Xem chi tiết kế hoạch
+                                            <a class="dropdown-item" routerLink="/plan/detail/{{item[0]}}">Xem chi tiết
+                                                kế hoạch
                                                 tiêm</a>
-                                            <a class="dropdown-item" href="javascript:void(2)">Xem danh sách vaccine cần
+                                            <a class="dropdown-item" (click)="vaccineDetail(item[0])">Xem danh sách
+                                                vaccine cần
                                                 dùng</a>
-                                            <a class="dropdown-item" (click)="updatePlan()">Sửa thông tin</a>
-                                            <a class="dropdown-item" (click)="deletePlan()">Xóa</a>
+                                            <a class="dropdown-item" routerLink="/plan/update/{{item[0]}}">Sửa thông
+                                                tin</a>
+                                            <a class="dropdown-item" (click)="deletePlan(item[0])">Xóa</a>
                                         </div>
                                     </div>
                                 </td>

@@ -11,6 +11,7 @@ import { UserProfileComponent } from './../../pages/user-profile/user-profile.co
 import { VaccineBatchComponent } from 'src/app/pages/vaccine-batch/vaccine-batch.component';
 import { PlanCreateComponent } from 'src/app/pages/plan-create/plan-create.component';
 import { PlanDetailComponent } from 'src/app/pages/plan-detail/plan-detail.component';
+import { PlanUpdateComponent } from 'src/app/pages/plan-update/plan-update.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
@@ -22,7 +23,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'registration/:id', component: InjectedRegistrationComponent },
     { path: 'plan', component: InjectedPlanComponent },
     { path: 'plan/create', component: PlanCreateComponent },
-    { path: 'plan/update/:id', component: PlanCreateComponent },
+    { path: 'plan/update/:id', component: PlanUpdateComponent },
     { path: 'plan/detail/:id', component: PlanDetailComponent },
     { path: 'profile', component: UserProfileComponent }
 ];

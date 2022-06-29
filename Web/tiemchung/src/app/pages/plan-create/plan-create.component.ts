@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { InjectedPlanService } from './../../services/injected-plan/injected-plan.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { dateFormat } from 'src/app/utils/dateFormat';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-plan-create',
@@ -25,8 +28,8 @@ export class PlanCreateComponent implements OnInit {
     width: 'auto',
     minWidth: '0',
     translate: 'no',
-    enableToolbar: false,
-    showToolbar: false,
+    enableToolbar: true,
+    showToolbar: true,
     placeholder: 'Enter text here...',
     defaultParagraphSeparator: '',
     defaultFontName: 'Times New Roman',
@@ -51,16 +54,25 @@ export class PlanCreateComponent implements OnInit {
     toolbarPosition: 'top',
   }
 
-  constructor(private injectedPlanService: InjectedPlanService) { }
+  constructor(private injectedPlanService: InjectedPlanService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
 
   onSave = () => {
-    this.injectedPlanService.createInjectedPlan(this.createPlanForm.value).then(data => {
+    // console.log(this.createPlanForm.value.content);
+    let data = {
+      title: this.createPlanForm.value.title,
+      content: this.createPlanForm.value.content,
+      implementationDate: dateFormat(this.createPlanForm.value.implementationDate, 'dd/MM/yyyy'),
+      implementationLocation: this.createPlanForm.value.implementationLocation,
+    }
+    this.injectedPlanService.createInjectedPlan(data).then(data => {
       console.log(data);
+      this.router.navigate(['/plan']);
+      this.toastr.success('Tạo kế hoạch tiêm thành công!', 'Success');
     }).catch(err => {
-      console.log(err);
+      this.toastr.error('Tạo kế hoạch tiêm thất bại!', 'Error');
     });
   }
 

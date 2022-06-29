@@ -10,16 +10,18 @@ import { InjectedPlanService } from 'src/app/services/injected-plan/injected-pla
   styleUrls: ['./injected-plan.component.scss']
 })
 export class InjectedPlanComponent implements OnInit {
+  planData: any[] = [];
 
   constructor(private injectedPlanService: InjectedPlanService, private modalService: NgbModal, private router: Router, private activeRoute: ActivatedRoute,) { }
 
   ngOnInit(): void {
+    this.fetchData()
   }
 
   fetchData = () => {
     this.injectedPlanService.getAllInjectedPlan().then(data => {
       for (let item of Object.entries(data.val())) {
-        console.log(item);
+        this.planData.push(item);
       }
     });
   }
@@ -28,11 +30,22 @@ export class InjectedPlanComponent implements OnInit {
     this.router.navigate(['/plan/create']);
   }
 
-  updatePlan = () => {
-    //const modalRef = this.modalService.open(PlanUpdateComponent, { ariaLabelledBy: 'modal-basic-title', size: 'lg', centered: true, scrollable: true, backdrop: false });
-  }
+  deletePlan = (id: string) => {
+    const modalRef = this.modalService.open(PlanDeleteComponent, { ariaLabelledBy: 'modal-basic-title', size: 'lg', centered: true, scrollable: true, backdrop: true });
 
-  deletePlan = () => {
-    const modalRef = this.modalService.open(PlanDeleteComponent, { ariaLabelledBy: 'modal-basic-title', size: 'lg', centered: true, scrollable: true, backdrop: false });
+    let data = {
+      id: id
+    }
+
+    modalRef.componentInstance.fromParent = data;
+    modalRef.result.then((result) => {
+      console.log(result);
+    }, (reason) => {
+      console.log(reason);
+    });
+
+    modalRef.closed.subscribe((result) => {
+      this.fetchData();
+    });
   }
 }
