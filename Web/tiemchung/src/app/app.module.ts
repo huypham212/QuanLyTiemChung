@@ -9,6 +9,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 import { NgbModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -24,6 +25,10 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AuthService } from './services/auth/auth.service';
 import { ToastrModule } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
+import { VaccineBatchComponent } from './pages/vaccine-batch/vaccine-batch.component';
+import { PlanCreateComponent } from './pages/plan-create/plan-create.component';
+import { PlanUpdateComponent } from './pages/plan-update/plan-update.component';
+import { PlanDetailComponent } from './pages/plan-detail/plan-detail.component';
 
 @NgModule({
   imports: [
@@ -34,6 +39,7 @@ import { DatePipe } from '@angular/common';
     NgbModule,
     NgbDatepickerModule,
     RouterModule,
+    AngularEditorModule,
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
@@ -48,11 +54,15 @@ import { DatePipe } from '@angular/common';
       maxOpened: 2,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
-    })
+    }),
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    VaccineBatchComponent,
+    PlanCreateComponent,
+    PlanUpdateComponent,
+    PlanDetailComponent,
   ],
   providers: [
     AuthService,

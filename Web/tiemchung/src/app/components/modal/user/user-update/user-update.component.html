@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="form-control-label" for="input-username">Họ Tên</label>
+                        <label class="form-control-label" for="input-name">Họ Tên</label>
                         <input type="text" id="input-name" formControlName="name"
                             class="form-control form-control-alternative" placeholder="Full name"
                             value="Phạm Nguyễn Thanh Huy">
@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <label class="form-control-label" for="input-phone">Số điện thoại</label>
                         <div>
-                            <input type="text" id="input-email" formControlName="phone"
+                            <input type="text" id="input-phone" formControlName="phone"
                                 class="form-control form-control-alternative" placeholder="098xxxxxxx">
                         </div>
                     </div>
@@ -37,13 +37,13 @@
                         <label class="form-control-label" for="input-gender">Giới tính</label>
                         <div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" formControlName="gender" value="Nam"
-                                    required>
+                                <input id="input-gender" class="form-check-input" type="radio" formControlName="gender"
+                                    value="Nam" required>
                                 <label class="form-check-label" for="inlineRdNam">Nam</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" formControlName="gender" value="Nữ"
-                                    required>
+                                <input id="input-gender" class="form-check-input" type="radio" formControlName="gender"
+                                    value="Nữ" required>
                                 <label class="form-check-label" for="inlineRdNu">Nữ</label>
                             </div>
                         </div>
@@ -55,8 +55,8 @@
                     <div class="form-group">
                         <label class="form-control-label" for="input-dob">Ngày sinh</label>
                         <div>
-                            <input class="form-control form-control-alternative datepicker" formControlName="dob"
-                                placeholder="dd/mm/yyyy" type="date" />
+                            <input id="input-dob" class="form-control form-control-alternative" formControlName="dob"
+                                value="{{updateUserForm.value.dob}}" type="date" />
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                     <div class="form-group">
                         <label class="form-control-label" for="input-id-card">CMND/CCCD/Hộ chiếu</label>
                         <input type="text" id="input-id-card" formControlName="idCard"
-                            class="form-control form-control-alternative" value="123456789">
+                            class="form-control form-control-alternative">
                     </div>
                 </div>
             </div>

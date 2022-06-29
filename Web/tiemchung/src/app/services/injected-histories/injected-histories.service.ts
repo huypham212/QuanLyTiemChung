@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from '../../models/user.model';
+import { Admin } from '../../models/admin.model';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
@@ -17,11 +17,15 @@ export class injectedHistoriesService {
         return this.db.database.ref('/injectedHistories/' + uid).once('value');
     }
 
-    createInjectedHistories = (uid: string, injectedHistories: any) => {
-        return this.db.database.ref('/injectedHistories/' + uid).set(injectedHistories);
+    getInjectedHistoriesByHistoryID = (uid: string, historyID: string) => {
+        return this.db.database.ref('/injectedHistories/' + uid + '/' + historyID).once('value');
     }
 
-    updateInjectedHistories = (uid: string, injectedHistories: any) => {
-        return this.db.database.ref('/injectedHistories/' + uid).update(injectedHistories);
+    createInjectedHistories = (uid: string, injectedHistories: any) => {
+        return this.db.database.ref('/injectedHistories/' + uid).push(injectedHistories);
+    }
+
+    updateInjectedHistories = (uid: string, historiesId: string, injectedHistories: any) => {
+        return this.db.database.ref('/injectedHistories/' + uid + "/" + historiesId).update(injectedHistories);
     }
 }

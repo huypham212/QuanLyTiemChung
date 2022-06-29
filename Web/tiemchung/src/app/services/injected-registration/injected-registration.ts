@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from '../../models/user.model';
+// import { User } from '../../models/admin.model';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
@@ -17,8 +17,8 @@ export class InjectedRegistrationService {
         return this.db.database.ref('/injectedRegistrations/' + uid).once('value');
     }
 
-    updateInjectedRegistration = (uid: string, injectedRegistration: any) => {
-        return this.db.database.ref('/injectedRegistrations/' + uid).update(injectedRegistration);
+    updateInjectedRegistration = (uid: string, registrationId: string, injectedRegistration: any) => {
+        return this.db.database.ref('/injectedRegistrations/' + uid + "/" + registrationId).update(injectedRegistration);
     }
 
 }

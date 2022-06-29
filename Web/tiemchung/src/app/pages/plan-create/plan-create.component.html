@@ -1,0 +1,69 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="row">
+                        <div class="col-10">
+                            <h3 class="mb-0">TẠO KẾ HOẠCH TIÊM MỚI</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="createPlanForm">
+                        <div class="pl-lg-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-title">Tiêu đề kế hoạch</label>
+                                <input type="text" id="input-title" formControlName="title"
+                                    class="form-control form-control-alternative">
+                            </div>
+                        </div>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-implementation-date">Ngày thực
+                                            hiện</label>
+                                        <div>
+                                            <input id="input-implementation-date"
+                                                class="form-control form-control-alternative datepicker"
+                                                formControlName="implementationDate" placeholder="dd/mm/yyyy"
+                                                type="date" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-implementation-location">Địa điểm
+                                            thực hiện</label>
+                                        <input type="text" id="input-implementation-location"
+                                            formControlName="implementationLocation"
+                                            class="form-control form-control-alternative">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pl-lg-4">
+                            <label class="form-control-label" for="input-content">Nội dung kế hoạch</label>
+                            <angular-editor id="input-content" formControlName="content" [config]="editorConfig">
+                            </angular-editor>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer py-4">
+                    <nav aria-label="...">
+                        <button type="button" class="btn btn-outline-dark" (click)="onSave()">Save</button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

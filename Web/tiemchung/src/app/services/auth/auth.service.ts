@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from '../../models/user.model';
+import { Admin } from '../../models/admin.model';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import {
@@ -50,7 +50,8 @@ export class AuthService {
                     console.log(result.user.uid, this.loginUid);
                     for (let acc of Object.entries(res.val())) {
                         if (result.user.uid === acc[1]) {
-                            this.router.navigate(['/']);
+                            this.router.navigate(['/dashboard']);
+                            this.toastr.success("Đăng nhập thành công!", 'Thành công');
                             this.SetUserData(result.user);
                         }
                         else {
@@ -88,7 +89,7 @@ export class AuthService {
         const userRef: AngularFirestoreDocument<any> = this.afs.doc(
             `users/${user.uid}`
         );
-        const userData: User = {
+        const userData: Admin = {
             uid: user.uid,
             email: user.email,
             displayName: user.displayName,

@@ -3,6 +3,17 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
 
     //styles for RegistrationInfo
+    headerStyle: {
+        fontSize: 20,
+        color: '#888888',
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        paddingHorizontal: 5,
+        marginTop: 5,
+        marginLeft: 10,
+        marginBottom: 5
+    },
+
     viewContainers: {
         marginTop: 10
     },

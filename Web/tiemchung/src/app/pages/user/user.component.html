@@ -58,7 +58,7 @@
                                     item[1].address.province}}
                                 </td>
                                 <td class="text-right">
-                                    <div ngbDropdown>
+                                    <div ngbDropdown container="body">
                                         <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
@@ -84,6 +84,11 @@
                         <ngb-pagination class="d-flex justify-content-center" size="lg" [(page)]="page"
                             [pageSize]="pageSize" [collectionSize]="arrayData.length" [boundaryLinks]="true">
                         </ngb-pagination>
+                        <select class="form-control" style="width: auto" name="pageSize" [(ngModel)]="pageSize">
+                            <option [ngValue]="5" selected>5 items per page</option>
+                            <option [ngValue]="10">10 items per page</option>
+                            <option [ngValue]="20">20 items per page</option>
+                        </select>
                     </nav>
                 </div>
             </div>

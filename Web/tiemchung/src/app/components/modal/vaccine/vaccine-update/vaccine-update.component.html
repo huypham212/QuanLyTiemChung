@@ -1,1 +1,24 @@
-<p>vaccine-update works!</p>
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">SỬA THÔNG TIN VACCINE</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal('Cross click')">&times;</button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="updateVaccineForm">
+        <div class="pl-lg-4">
+            <div class="form-group">
+                <label class="form-control-label" for="input-name">Tên vaccine</label>
+                <input type="text" id="input-name" formControlName="name" class="form-control form-control-alternative">
+            </div>
+        </div>
+        <div class="pl-lg-4">
+            <div class="form-group">
+                <label class="form-control-label" for="input-origin">Nguồn gốc xuất xứ</label>
+                <input id="input-origin" class="form-control form-control-alternative" formControlName="origin"
+                    type="text">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSave()">Save</button>
+</div>

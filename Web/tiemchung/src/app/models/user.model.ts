@@ -1,6 +1,14 @@
 export interface User {
-    uid: string;
-    email: string;
-    displayName: string;
-    photoURL: string;
+    name: string,
+    email: string,
+    dob: string,
+    gender: string,
+    idCard: string,
+    phone: string,
+    address: {
+        details: string,
+        commune: string,
+        city: string,
+        province: string
+    }
 }
