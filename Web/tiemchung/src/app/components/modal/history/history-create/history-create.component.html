@@ -6,8 +6,9 @@
     <form [formGroup]="createHistoryForm">
         <div class="pl-lg-4">
             <div class="form-group">
-                <label class="form-control-label" for="input-username">Tên điểm tiêm</label>
-                <select class="form-control form-control-alternative" formControlName="injectedLocation">
+                <label class="form-control-label" for="input-injected-location">Tên điểm tiêm</label>
+                <select id="input-injected-location" class="form-control form-control-alternative"
+                    formControlName="injectedLocation">
                     <option selected>...</option>
                     <option *ngFor="let item of injectedLocationData">{{item.name}}</option>
                 </select>
@@ -15,10 +16,10 @@
         </div>
         <div class="pl-lg-4">
             <div class="form-group">
-                <label class="form-control-label" for="input-phone">Tên vaccine</label>
+                <label class="form-control-label" for="input-vaccine-name">Tên vaccine</label>
                 <div>
-                    <select class="form-control form-control-alternative" formControlName="vaccineName"
-                        (change)="onVaccineChange()">
+                    <select id="input-vaccine-name" class="form-control form-control-alternative"
+                        formControlName="vaccineName" (change)="onVaccineChange()">
                         <option selected>...</option>
                         <option *ngFor="let item of vaccineData">{{item[1].name}}</option>
                     </select>
@@ -30,7 +31,8 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label class="form-control-label" for="input-batch-number">Số lô vaccine</label>
-                        <select class="form-control form-control-alternative" formControlName="batchNumber">
+                        <select id="input-batch-number" class="form-control form-control-alternative"
+                            formControlName="batchNumber">
                             <option selected>...</option>
                             <option *ngFor="let item of batchData">{{item[0]}}</option>
                         </select>
@@ -38,9 +40,9 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="form-control-label" for="input-dob">Ngày tiêm</label>
+                        <label class="form-control-label" for="input-injected-date">Ngày tiêm</label>
                         <div>
-                            <input class="form-control form-control-alternative datepicker"
+                            <input id="input-injected-date" class="form-control form-control-alternative datepicker"
                                 formControlName="injectedDate" placeholder="dd/mm/yyyy" type="date" />
                         </div>
                     </div>

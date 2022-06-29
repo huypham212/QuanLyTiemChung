@@ -22,7 +22,7 @@
                         <div class="pl-lg-4">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-title">Tiêu đề kế hoạch</label>
-                                <input type="text" id="input-name" formControlName="title"
+                                <input type="text" id="input-title" formControlName="title"
                                     class="form-control form-control-alternative">
                             </div>
                         </div>
@@ -33,7 +33,8 @@
                                         <label class="form-control-label" for="input-implementation-date">Ngày thực
                                             hiện</label>
                                         <div>
-                                            <input class="form-control form-control-alternative datepicker"
+                                            <input id="input-implementation-date"
+                                                class="form-control form-control-alternative datepicker"
                                                 formControlName="implementationDate" placeholder="dd/mm/yyyy"
                                                 type="date" />
                                         </div>
@@ -43,7 +44,8 @@
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-implementation-location">Địa điểm
                                             thực hiện</label>
-                                        <select class="form-control form-control-alternative"
+                                        <select id="input-implementation-location"
+                                            class="form-control form-control-alternative"
                                             formControlName="implementationLocation">
                                             <option *ngFor="let item of injectedLocationData"
                                                 [selected]="item.name === updatePlanForm.value.implementationLocation">
@@ -55,7 +57,7 @@
                         </div>
                         <div class="pl-lg-4">
                             <label class="form-control-label" for="input-content">Nội dung kế hoạch</label>
-                            <angular-editor formControlName="content" [config]="editorConfig">
+                            <angular-editor id="input-content" formControlName="content" [config]="editorConfig">
                             </angular-editor>
                         </div>
                     </form>

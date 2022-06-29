@@ -6,7 +6,7 @@
     <form [formGroup]="createLocationForm">
         <div class="pl-lg-4">
             <div class="form-group">
-                <label class="form-control-label" for="input-username">Tên điểm tiêm</label>
+                <label class="form-control-label" for="input-name">Tên điểm tiêm</label>
                 <input type="text" id="input-name" formControlName="name" class="form-control form-control-alternative">
             </div>
         </div>
@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label class="form-control-label" for="input-detail">Địa chỉ</label>
+                        <label class="form-control-label" for="input-address">Địa chỉ</label>
                         <input id="input-address" class="form-control form-control-alternative"
                             formControlName="address" placeholder="Địa chỉ chi tiết" type="text">
                     </div>
@@ -23,8 +23,8 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label" for="input-city">Xã/Phường</label>
-                        <input type="text" id="input-city" class="form-control form-control-alternative"
+                        <label class="form-control-label" for="input-commune">Xã/Phường</label>
+                        <input type="text" id="input-commune" class="form-control form-control-alternative"
                             formControlName="commune" placeholder="Xã/Phường">
                     </div>
                 </div>
