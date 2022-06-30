@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/users/user.service';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserUpdateComponent } from 'src/app/components/modal/user/user-update/user-update.component';
 import { UserDeleteComponent } from 'src/app/components/modal/user/user-delete/user-delete.component';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -19,7 +18,7 @@ export class UserComponent implements OnInit {
   arrayData = [];
   rawData: any;
   closeResult: string;
-  constructor(private userService: UserService, private modalService: NgbModal, private router: Router, private toastr: ToastrService) { }
+  constructor(private userService: UserService, private modalService: NgbModal, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchData();

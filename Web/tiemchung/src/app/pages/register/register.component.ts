@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -21,7 +19,7 @@ export class RegisterComponent implements OnInit {
   })
 
 
-  constructor(private authService: AuthService, private router: Router, private toast: ToastrService) { }
+  constructor(private authService: AuthService, private toast: ToastrService) { }
 
   ngOnInit() {
 

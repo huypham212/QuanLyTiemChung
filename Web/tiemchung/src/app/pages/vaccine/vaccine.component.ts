@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrService } from 'ngx-toastr';
 import { VaccineCreateComponent } from 'src/app/components/modal/vaccine/vaccine-create/vaccine-create.component';
 import { VaccineDeleteComponent } from 'src/app/components/modal/vaccine/vaccine-delete/vaccine-delete.component';
 import { VaccineUpdateComponent } from 'src/app/components/modal/vaccine/vaccine-update/vaccine-update.component';
@@ -14,7 +12,7 @@ import { VaccineService } from 'src/app/services/vaccine/vaccine.service';
 })
 export class VaccineComponent implements OnInit {
   arrayData = [];
-  constructor(private vaccineService: VaccineService, private modalService: NgbModal, private router: Router, private toastr: ToastrService) { }
+  constructor(private vaccineService: VaccineService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.fetchData();

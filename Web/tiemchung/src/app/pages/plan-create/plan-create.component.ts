@@ -60,7 +60,6 @@ export class PlanCreateComponent implements OnInit {
   }
 
   onSave = () => {
-    // console.log(this.createPlanForm.value.content);
     let data = {
       title: this.createPlanForm.value.title,
       content: this.createPlanForm.value.content,
