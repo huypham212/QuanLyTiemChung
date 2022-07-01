@@ -9,6 +9,10 @@ export class InjectedRegistrationService {
         return this.db.database.ref('/injectedRegistrations/' + uid).once('value');
     }
 
+    getInjectedRegistrationByID = (uid: string, registrationId: string) => {
+        return this.db.database.ref('/injectedRegistrations/' + uid + '/' + registrationId).once('value');
+    }
+
     updateInjectedRegistration = (uid: string, registrationId: string, injectedRegistration: any) => {
         return this.db.database.ref('/injectedRegistrations/' + uid + "/" + registrationId).update(injectedRegistration);
     }
