@@ -47,6 +47,13 @@ const styles = StyleSheet.create({
         color: '#000000',
     },
 
+    titleLocationStyles: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#000000',
+        marginLeft: 10
+    },
+
     inputStyle: {
         paddingLeft: 10,
         paddingRight: 10,

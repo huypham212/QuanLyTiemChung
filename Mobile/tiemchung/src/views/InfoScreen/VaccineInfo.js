@@ -13,9 +13,10 @@ const VaccineInfo = () => {
 
     const fetchData = () => {
         setIsLoad(true);
-        database().ref("/injectedInfo/" + auth().currentUser.uid).on('value', snapshot => {
-            setInjectedData(snapshot.val())
+        database().ref("/injectedHistories/" + auth().currentUser.uid).on('value', snapshot => {
+            setInjectedData(Object.values(snapshot.val()))
             setIsLoad(false)
+            // console.log("injectedData: ", injectedData)
         })
     }
 
@@ -39,7 +40,7 @@ const VaccineInfo = () => {
                 }}
                 loading={isLoad}
                 iconPosition='left'
-                titleStyle={{ fontSize: 20 }}
+                titleStyle={{ fontSize: 18 }}
                 buttonStyle={styles.btnStyle}
                 onPress={() => fetchData()}
             />

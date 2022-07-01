@@ -1,4 +1,4 @@
-import { SIGN_IN, SIGN_OUT, GET_USER, GET_VACCINE_CALENDAR, POST_VACCINE_CALENDAR } from '../constants';
+import { SIGN_IN, SIGN_OUT, GET_USER, GET_VACCINE_CALENDAR, GET_VACCINES, GET_INJECTED_LOCATIONS, POST_VACCINE_CALENDAR } from '../constants';
 import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
 
@@ -34,10 +34,32 @@ export function getUser(uid) {
 
 export function getVaccineCalendar(uid) {
   return async function (dispatch, getState) {
-    database().ref('/injectedRegitrations/' + uid).on('value', snapshot => {
+    database().ref('/injectedRegistrations/' + uid).on('value', snapshot => {
       dispatch({
         type: GET_VACCINE_CALENDAR,
         vaccineCalendar: snapshot.val()
+      })
+    })
+  }
+}
+
+export function getInjectedLocations() {
+  return async function (dispatch, getState) {
+    database().ref('/injectedLocations').on('value', snapshot => {
+      dispatch({
+        type: GET_INJECTED_LOCATIONS,
+        injectedLocations: snapshot.val()
+      })
+    })
+  }
+}
+
+export function getVaccines() {
+  return async function (dispatch, getState) {
+    database().ref('/vaccines').on('value', snapshot => {
+      dispatch({
+        type: GET_VACCINES,
+        vaccines: snapshot.val()
       })
     })
   }

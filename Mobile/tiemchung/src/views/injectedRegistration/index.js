@@ -1,14 +1,16 @@
 import React from "react";
 import styles from "./styles";
 import { ScrollView, View, Alert } from "react-native";
-import { Button, Text, InputField } from "../../components";
+import { Button } from "../../components";
 import { Wizard } from 'react-native-ui-lib';
+import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 import RegistrationInfo from './RegistrationInfo';
-import InjectedHistory from './InjectedHistory';
 import Confirmation from "./Confirmation";
-import { set } from "react-native-reanimated";
+import { connect } from 'react-redux';
+import * as ActionCreator from '../../redux/actions';
 
-const InjectedRegistration = ({ navigation }) => {
+const InjectedRegistration = (props) => {
     const [activeIndex, setActiveIndex] = React.useState(0);
     const [completedStepIndex, setCompletedStepIndex] = React.useState(0);
 
@@ -23,8 +25,11 @@ const InjectedRegistration = ({ navigation }) => {
     }
 
     const goToNextStep = () => {
-        const nextStep = activeIndex === 2 ? (
-            Alert.alert("Đăng ký thành công!", "Vui lòng kiểm tra thông tin đăng ký trong lịch tiêm", navigation.navigate('Home'))
+        const nextStep = activeIndex === 1 ? (
+            //console.log(props.injectedInfo)
+            database().ref('injectedRegistrations/' + auth().currentUser.uid).push(props.injectedInfo[0]).then(() => {
+                Alert.alert("Đăng ký thành công!", "Vui lòng kiểm tra thông tin đăng ký trong lịch tiêm", props.navigation.navigate('Home'))
+            })
         ) : activeIndex + 1;
         setCompletedStepIndex(nextStep);
         setActiveIndex(nextStep);
@@ -47,7 +52,7 @@ const InjectedRegistration = ({ navigation }) => {
     }
 
     const renderNextButton = () => {
-        const title = activeIndex === 2 ? 'Hoàn thành' : 'Tiếp theo';
+        const title = activeIndex === 1 ? 'Hoàn thành' : 'Tiếp theo';
 
         return (
             <Button
@@ -79,8 +84,6 @@ const InjectedRegistration = ({ navigation }) => {
             case 0:
                 return <RegistrationInfo />;
             case 1:
-                return <InjectedHistory />;
-            case 2:
                 return <Confirmation />;
         }
     }
@@ -89,8 +92,7 @@ const InjectedRegistration = ({ navigation }) => {
         <ScrollView>
             <Wizard activeIndex={activeIndex} onActiveIndexChanged={() => onActiveIndexChanged()}>
                 <Wizard.Step label={"Thông tin người đăng ký"} state={getStepState(0)} />
-                <Wizard.Step label={"Tiền sử tiêm"} state={getStepState(1)} />
-                <Wizard.Step label={"Phiếu xác nhận"} state={getStepState(2)} />
+                <Wizard.Step label={"Phiếu xác nhận"} state={getStepState(1)} />
             </Wizard>
             {renderCurrentStep()}
 
@@ -102,4 +104,13 @@ const InjectedRegistration = ({ navigation }) => {
     )
 }
 
-export default InjectedRegistration
+const mapStateToProps = (state) => {
+    return {
+        user: state.appState.user,
+        injectedInfo: state.appState.injectedInfo,
+        injectedLocations: state.appState.injectedLocations,
+        vaccines: state.appState.vaccines
+    }
+}
+
+export default connect(mapStateToProps)(InjectedRegistration)

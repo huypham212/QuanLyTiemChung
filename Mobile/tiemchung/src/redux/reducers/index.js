@@ -1,9 +1,11 @@
-import { SIGN_IN, SIGN_OUT, GET_USER, GET_VACCINE_CALENDAR, POST_VACCINE_CALENDAR } from '../constants';
+import { SIGN_IN, SIGN_OUT, GET_USER, GET_VACCINE_CALENDAR, GET_VACCINES, POST_VACCINE_CALENDAR, GET_INJECTED_LOCATIONS } from '../constants';
 
 let initialState = {
   isLogin: false,
   user: {},
-  vaccineCalendar: [],
+  vaccines: {},
+  vaccineCalendar: {},
+  injectedLocations: {},
   injectedInfo: {}
 };
 
@@ -28,10 +30,22 @@ const countReducer = (state = initialState, action) => {
         user: action.user
       }
       break;
+    case GET_VACCINES:
+      state = {
+        ...state,
+        vaccines: action.vaccines
+      }
+      break;
     case GET_VACCINE_CALENDAR:
       state = {
         ...state,
         vaccineCalendar: action.vaccineCalendar
+      }
+      break;
+    case GET_INJECTED_LOCATIONS:
+      state = {
+        ...state,
+        injectedLocations: action.injectedLocations
       }
       break;
     case POST_VACCINE_CALENDAR:
