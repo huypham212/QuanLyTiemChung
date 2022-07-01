@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PlanDeleteComponent } from 'src/app/components/modal/plan/plan-delete/plan-delete.component';
 import { InjectedPlanService } from 'src/app/services/injected-plan/injected-plan.service';
@@ -12,7 +12,7 @@ import { InjectedPlanService } from 'src/app/services/injected-plan/injected-pla
 export class InjectedPlanComponent implements OnInit {
   planData: any[] = [];
 
-  constructor(private injectedPlanService: InjectedPlanService, private modalService: NgbModal, private router: Router, private activeRoute: ActivatedRoute,) { }
+  constructor(private injectedPlanService: InjectedPlanService, private modalService: NgbModal, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchData()

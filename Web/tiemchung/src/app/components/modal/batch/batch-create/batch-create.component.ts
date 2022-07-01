@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -20,7 +19,7 @@ export class BatchCreateComponent implements OnInit {
     dateExp: new FormControl(''),
   })
 
-  constructor(private vaccineService: VaccineService, public activeModal: NgbActiveModal, private datePipe: DatePipe, private toastr: ToastrService) { }
+  constructor(private vaccineService: VaccineService, public activeModal: NgbActiveModal, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +31,6 @@ export class BatchCreateComponent implements OnInit {
       dateExp: dateFormat(this.createBatchForm.value.dateExp, 'dd/MM/yyyy'),
     }
 
-    // console.log(this.fromParent.vaccineID, this.createBatchForm.value.batchNumber);
     this.vaccineService.createVaccineBatch(this.fromParent.vaccineID, this.createBatchForm.value.batchNumber, data).then(() => {
       this.toastr.success('Create batch success', 'Success');
       this.activeModal.close();

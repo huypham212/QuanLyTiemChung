@@ -12,10 +12,31 @@ import { connect } from 'react-redux';
 
 const RegistrationInfo = (props) => {
     const [dateRegistration, setDateRegistration] = React.useState(new Date());
-    const [injectedLocation, setInjectedLocation] = React.useState("TYT xã Vĩnh Thạnh");
+    const [injectedLocation, setInjectedLocation] = React.useState([]);
+    const [vaccine, setVaccine] = React.useState([]);
+    const [selectedVaccine, setSelectedVaccine] = React.useState('');
+    const [selectedLocation, setSelectedLocation] = React.useState('');
 
     var dateParts = props.user.dob.split("/");
     var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+
+    fetchData = () => {
+        setInjectedLocation(Object.values(props.injectedLocations));
+        setVaccine(Object.values(props.vaccines));
+        console.log(injectedLocation);
+    }
+
+    React.useEffect(() => {
+        fetchData();
+        // console.log(props.injectedLocations);
+
+    }, [])
+
+    setTimeout(() => {
+        injectedLocation.map((item, index) => {
+            console.log(item.name);
+        })
+    }, 1000)
 
     const onChangeDate = (date) => {
         if (date <= new Date()) {
@@ -27,9 +48,9 @@ const RegistrationInfo = (props) => {
         const info = [{
             "createAt": new Date(),
             "registrationDate": dateFormat(JSON.stringify(date).substring(1, 11), 'dd/MM/yyyy'),
-            "registrationLocation": injectedLocation,
-            "status": "No Injected",
-            "vaccineName": "COVID-19 VACCINE AstraZeneca"
+            "registrationLocation": selectedLocation,
+            "status": "Chờ xác nhận",
+            "vaccineName": selectedVaccine
         }]
         props.dispatch(ActionCreator.postVaccineCalendar(info));
     }
@@ -124,6 +145,31 @@ const RegistrationInfo = (props) => {
                 <Text style={styles.headerStyle}>Thông tin đăng ký tiêm</Text>
                 <View style={{ backgroundColor: '#888888', height: 2, flex: 1, alignSelf: 'center' }} />
             </View>
+            <Text style={styles.titleLocationStyles}>Địa điểm đăng ký</Text>
+            <Picker
+                selectedValue={selectedLocation}
+                enabled={true}
+                style={{ color: '#000000' }}
+                onValueChange={(value) => { setSelectedLocation(value) }}
+
+            >
+                <Picker.Item style={{ fontSize: 18 }} label="..." />
+                {injectedLocation.map((item, index) => {
+                    return <Picker.Item key={index} style={{ fontSize: 18 }} label={item.name} value={item.name} />
+                })}
+            </Picker>
+            <Text style={styles.titleLocationStyles}>Chọn vaccines</Text>
+            <Picker
+                selectedValue={selectedVaccine}
+                enabled={true}
+                style={{ color: '#000000' }}
+                onValueChange={(value) => { setSelectedVaccine(value) }}
+            >
+                <Picker.Item style={{ fontSize: 18 }} label="..." />
+                {vaccine.map((item, index) => {
+                    return <Picker.Item key={index} style={{ fontSize: 18 }} label={item.name} value={item.name} />
+                })}
+            </Picker>
             <DateTimePicker
                 containerStyle={styles.inputStyle}
                 underlineColor={'#778899'}
@@ -133,15 +179,8 @@ const RegistrationInfo = (props) => {
                 dateFormat={"DD/MM/YYYY"}
                 value={dateRegistration}
                 editable={true}
-                style={{ color: '#000000' }}
+                style={{ color: '#000000', fontSize: 18 }}
                 onChange={(value) => { onChangeDate(value) }}
-            />
-            <InputField
-                inputStyle={styles.inputStyle}
-                label="Nơi đăng ký tiêm"
-                value={injectedLocation}
-                labelStyle={styles.labelEnableStyle}
-                onChangeText={setInjectedLocation}
             />
         </ScrollView>
     )
@@ -150,7 +189,9 @@ const RegistrationInfo = (props) => {
 const mapStateToProps = (state) => {
     return {
         user: state.appState.user,
-        injectedInfo: state.appState.injectedInfo
+        injectedInfo: state.appState.injectedInfo,
+        injectedLocations: state.appState.injectedLocations,
+        vaccines: state.appState.vaccines
     }
 }
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LocationCreateComponent } from 'src/app/components/modal/location/location-create/location-create.component';
 import { LocationDeleteComponent } from 'src/app/components/modal/location/location-delete/location-delete.component';
@@ -16,7 +15,7 @@ export class InjectedLocationComponent implements OnInit {
   page = 1;
   pageSize = 5;
 
-  constructor(private modalService: NgbModal, private activeRoute: ActivatedRoute, private injectedLocationService: InjectedLocationService) { }
+  constructor(private modalService: NgbModal, private injectedLocationService: InjectedLocationService) { }
 
   ngOnInit(): void {
     this.fetchData();

@@ -108,7 +108,7 @@ const SignUpScreen = (props) => {
                     <Button
                         title="Tiếp tục"
                         buttonStyle={styles.btnStyle}
-                        disabled="true"
+                        disabled={true}
                     />
                 )}
             </View>

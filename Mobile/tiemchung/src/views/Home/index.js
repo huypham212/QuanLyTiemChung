@@ -15,6 +15,9 @@ const HomeScreen = (props) => {
 
     const fetchData = () => {
         props.dispatch(ActionCreator.getUser(auth().currentUser.uid));
+        props.dispatch(ActionCreator.getVaccineCalendar(auth().currentUser.uid));
+        props.dispatch(ActionCreator.getInjectedLocations());
+        props.dispatch(ActionCreator.getVaccines());
         setLoading(false);
     }
 

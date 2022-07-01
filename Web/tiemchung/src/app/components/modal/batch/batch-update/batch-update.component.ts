@@ -51,7 +51,6 @@ export class BatchUpdateComponent implements OnInit {
       dateExp: dateFormat(this.updateBatchForm.value.dateExp, 'dd/MM/yyyy'),
     }
 
-    // console.log(this.fromParent.vaccineID, this.createBatchForm.value.batchNumber);
     this.vaccineService.updateVaccineBatch(this.fromParent.vaccineId, this.fromParent.batchId, data).then(() => {
       this.activeModal.close();
       this.updateBatchForm.reset();

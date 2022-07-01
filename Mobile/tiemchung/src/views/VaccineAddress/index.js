@@ -12,11 +12,11 @@ const VaccineAddress = () => {
     const [data, setData] = useState([]);
 
     const fetch_data = () => {
-        database().ref("injectedLocation").once("value").then(snapshot => {
+        database().ref("injectedLocations").once("value").then(snapshot => {
             var temp_data = [];
             snapshot.forEach(e => {
                 temp_data.push({
-                    name: e.key,
+                    name: e.val().name,
                     address: e.val().address,
                     commune: e.val().commune,
                     city: e.val().city,
@@ -41,7 +41,7 @@ const VaccineAddress = () => {
                 var temp_data = [];
                 snapshot.forEach(e => {
                     temp_data.push({
-                        name: e.key,
+                        name: e.val().name,
                         address: e.val().address,
                         commune: e.val().commune,
                         city: e.val().city,
